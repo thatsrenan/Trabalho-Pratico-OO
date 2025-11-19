@@ -7,4 +7,7 @@ public abstract class Corrida {
     private String status; // Motorista a caminho, Em andamento, Finalizando
     private Motorista motorista;
 
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
+    }
 }

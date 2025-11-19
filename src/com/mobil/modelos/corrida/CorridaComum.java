@@ -1,6 +1,9 @@
 package com.mobil.modelos.corrida;
 
 import com.mobil.modelos.pagamento.*;
+import com.mobil.modelos.pessoas.Motorista;
+
+import java.util.ArrayList;
 
 public class CorridaComum extends Corrida{
     private static int tarifaBaseComum;
@@ -9,8 +12,10 @@ public class CorridaComum extends Corrida{
 
 
     // mPagamento : 1 = Dinheiro, 2 = PIX, 3 = CartaoDeCredito
-    public CorridaComum(float dinheiroDisponivel, float distancia, int mPagamento) {
+    public CorridaComum(int indiceMotorista, ArrayList<Motorista> motoristas,
+                        float dinheiroDisponivel, float distancia, int mPagamento) {
         float precoCorrida = tarifaBaseComum + distancia * multiplicadorComum;
+        this.setMotorista(motoristas.get(indiceMotorista)); // da a referência para o motorista mais próximo disponível
 
         switch (mPagamento) {
             case 1 -> metodoDePagamento = new Dinheiro(dinheiroDisponivel, precoCorrida);

@@ -1,10 +1,14 @@
 package com.mobil.modelos.pessoas;
 
+import com.mobil.modelos.corrida.Corrida;
+import com.mobil.modelos.corrida.CorridaComum;
 import com.mobil.modelos.propriedades.Localizacao;
 
 import java.util.ArrayList;
 
 public class Passageiro extends Usuario{
+
+    private Corrida corrida;
 
     // Não usa parâmetros, pergunta os dados, porque é para ser preenchido pelo Passageiro Usuário
     public Passageiro() {
@@ -54,19 +58,19 @@ public class Passageiro extends Usuario{
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
-    public void chamarCorrida(ArrayList<Motorista> motoristas, String tipoCorrida) {
+    public void chamarCorrida(ArrayList<Motorista> motoristas, String tipoCorrida, float dinheiroDisponivel, int mPagamento) {
         System.out.println("Primeiramente, digite sua senha para confimar sua ação: ");
         int senhaEscrita = sc.nextInt();
         if (senhaEscrita != this.getSenha()) {
             return;
         }
         int indiceMotoristaMaisProximo = 0;
-        double menorDist = distancia(localizacao.getX(), localizacao.getY(),
+        float menorDist = (float) distancia(localizacao.getX(), localizacao.getY(),
                 motoristas.get(0).localizacao.getX(), motoristas.get(0).localizacao.getY());
 
         for (int i = 1; i < motoristas.size(); i++) {
             if (motoristas.get(i).getStatus() == "Disponível") {
-                double distAux = distancia(localizacao.getX(), localizacao.getY(),
+                float distAux = (float) distancia(localizacao.getX(), localizacao.getY(),
                         motoristas.get(i).localizacao.getX(), motoristas.get(i).localizacao.getY());
                 if (distAux < menorDist) {
                     menorDist = distAux;
@@ -74,6 +78,12 @@ public class Passageiro extends Usuario{
                 }
             }
         }
+
+        if (tipoCorrida == "Comum") {
+            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento);
+            System.out.println("Corrida comum criada.");
+        }
+
 
         // AGORA CRIAR A CORRIDA
     }

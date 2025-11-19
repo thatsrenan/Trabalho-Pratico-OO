@@ -16,7 +16,9 @@ public class Principal {
         motoristas.add(new Motorista("Carlos", "carlos.hernqiue@gmail.com", "047.385.198-91", "61 97373-8940", 9898,
                 50, 80, "GKP3H12", "Fiat", "Uno", "Vermelho", 2016, "04123456789", 2028));
 
-        user.chamarCorrida(motoristas, "Comum");
+        // mPagamento: 1 = Dinheiro, 2 = PIX,, 3 = CartaoDeCredito
+        user.chamarCorrida(motoristas, "Comum", 50, 1);
+
 
     }
 }
