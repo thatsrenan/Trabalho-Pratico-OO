@@ -6,8 +6,8 @@ import com.mobil.modelos.pessoas.Motorista;
 import java.util.ArrayList;
 
 public class CorridaComum extends Corrida{
-    private static int tarifaBaseComum;
-    private static int multiplicadorComum;
+    private static int tarifaBaseComum = 5;
+    private static int multiplicadorComum = 1;
     private MetodoDePagamento metodoDePagamento;
 
 
@@ -22,6 +22,17 @@ public class CorridaComum extends Corrida{
             case 2 -> metodoDePagamento = new PIX(); // não implementado
             case 3 -> metodoDePagamento = new CartaoDeCredito(); // não implementado
         }
+
+        System.out.println("Tudo pronto para iniciar a corrida.");
+        sc.nextLine();
+        iniciarCorrida();
+    }
+
+    public void iniciarCorrida() {
+
+    }
+
+    public void finalizarCorrida() {
 
     }
 }
