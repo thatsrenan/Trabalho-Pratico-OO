@@ -14,4 +14,8 @@ public abstract class Corrida {
     public void setMotorista(Motorista motorista) {
         this.motorista = motorista;
     }
+
+    public Motorista getMotorista() {
+        return motorista;
+    }
 }

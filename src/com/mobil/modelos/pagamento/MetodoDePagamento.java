@@ -4,6 +4,11 @@ public abstract class MetodoDePagamento {
     private float dinheiroDisponivel; // de quem chamou a corrida
     private float precoCorrida;
 
+    public MetodoDePagamento(float dinheiroDisponivel, float precoCorrida){
+        this.dinheiroDisponivel = dinheiroDisponivel;
+        this.precoCorrida = precoCorrida;
+    }
+
     public abstract void pagar();
 
     public float getDinheiroDisponivel() {

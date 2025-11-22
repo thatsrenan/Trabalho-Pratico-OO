@@ -10,6 +10,7 @@ public abstract class Usuario {
     private String CPF;
     private String telefone;
     private int senha;
+    private String chavePIX;
 
     Localizacao localizacao;
     Avaliacao avaliacao;
@@ -36,6 +37,10 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
+    public void setchavePIX(String chavePIX){
+        this.chavePIX = chavePIX;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -55,4 +60,9 @@ public abstract class Usuario {
     public int getSenha() {
         return senha;
     }
+
+    public String getchavePIX(){
+        return this.chavePIX;
+    }
+
 }
