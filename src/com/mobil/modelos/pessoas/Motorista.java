@@ -28,4 +28,8 @@ public class Motorista extends Usuario{
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
 }

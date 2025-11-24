@@ -16,6 +16,10 @@ public class Veiculo {
         this.ano = ano;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
     public String getPlaca() {
         return placa;
     }

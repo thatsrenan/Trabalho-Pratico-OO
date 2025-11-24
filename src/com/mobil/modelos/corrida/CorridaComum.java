@@ -29,14 +29,17 @@ public class CorridaComum extends Corrida{
             case 3 -> metodoDePagamento = new CartaoDeCredito(dinheiroDisponivel, precoCorrida); // não implementado
         }
 
-        System.out.println("Tudo pronto para iniciar a corrida.");
+        System.out.printf("\nTudo pronto para iniciar a corrida.\nMotorista encontrado: %s", this.getMotorista().getNome());
         sc.nextLine();
         corridaChamada();
     }
 
     public void corridaChamada() {
         //
-        System.out.println("Motorista a caminho.");
+        System.out.println("Motorista a caminho.\nCarro: ");
+        System.out.printf("%s %s %s - %s", this.getMotorista().getVeiculo().getMarca(), this.getMotorista().getVeiculo().getModelo(),
+                this.getMotorista().getVeiculo().getCor(), this.getMotorista().getVeiculo().getPlaca());
+
         // mudar status do motorista e corrida
         this.getMotorista().setStatus("Motorista a caminho do passageito");
         this.setStatus("Motorista a caminho do passageiro.");
@@ -47,7 +50,7 @@ public class CorridaComum extends Corrida{
         int passageiroX = this.getPassageiro().getLocalizacao().getX(), passageiroY = this.getPassageiro().getLocalizacao().getY();
 
         while (motoristaX != passageiroX && motoristaY != passageiroY) {
-            // loop de corrida
+            // loop do motorista chegando no passageiro
 
             if (motoristaX > passageiroX) {
                 motoristaX--;
@@ -61,12 +64,28 @@ public class CorridaComum extends Corrida{
                 motoristaY++;
             }
 
+            this.getMotorista().getLocalizacao().setX(motoristaX);
+            this.getMotorista().getLocalizacao().setY(motoristaY);
+
+            System.out.printf("Motorista está na posição [%d] [%d], a %d metros de você!", motoristaX, motoristaY);
+
+            // Atualização do tempo esperado
 
 
+            // System.out.println("Enter para continuar: ");
+            // sc.nextLine();
         }
+
+        System.out.printf("\nO %s chegou no seu destino!", this.getMotorista().getNome());
+        System.out.println("Enter para iniciar a corrida.");
+        sc.nextLine();
+    }
+
+    public void iniciarCorrida() {
+        // loop da corrida
     }
 
     public void finalizarCorrida() {
-
+        // Pagamento
     }
 }
