@@ -65,4 +65,7 @@ public abstract class Usuario {
         return this.chavePIX;
     }
 
+    public Localizacao getLocalizacao() {
+        return localizacao;
+    }
 }

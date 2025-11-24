@@ -4,9 +4,11 @@ public class PIX extends MetodoDePagamento {
     private String chavePIX;
 
     public PIX(float dinheiroDisponivel, float precoCorrida, String chavePIX){
-        super(dinheiroDisponivel, precoCorrida);
+        this.setDinheiroDisponivel(dinheiroDisponivel);
+        this.setPrecoCorrida(precoCorrida);
         this.chavePIX = chavePIX;
     }
+
     @Override
     public void pagar() {
 

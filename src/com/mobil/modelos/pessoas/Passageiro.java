@@ -80,7 +80,7 @@ public class Passageiro extends Usuario{
         }
 
         if (tipoCorrida == "Comum") {
-            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento);
+            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento, this);
             System.out.println("Corrida comum criada.");
         }
 
