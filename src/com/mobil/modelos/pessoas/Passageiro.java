@@ -83,12 +83,12 @@ public class Passageiro extends Usuario{
         Localizacao destino = new Localizacao(destX, destY);
 
         int indiceMotoristaMaisProximo = 0;
-        float menorDist = (float) Localizacao.getDistancia(this, motoristas.get(0));
+        float menorDist = (float) Localizacao.getDistancia(this.getLocalizacao(), motoristas.get(0).getLocalizacao());
         indiceMotoristaMaisProximo = 0;
 
         for (int i = 1; i < motoristas.size(); i++) {
             if (motoristas.get(i).getStatus().equals("Disponível")) {
-                float distAux = (float) Localizacao.getDistancia(this, motoristas.get(i));
+                float distAux = (float) Localizacao.getDistancia(this.getLocalizacao(), motoristas.get(i).getLocalizacao());
                 if (distAux < menorDist) {
                     menorDist = distAux;
                     indiceMotoristaMaisProximo = i;

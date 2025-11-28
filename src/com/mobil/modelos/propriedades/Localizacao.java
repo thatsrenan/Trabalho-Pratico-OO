@@ -29,11 +29,11 @@ public class Localizacao {
         this.y = y;
     }
 
-    public static double getDistancia(Usuario usuario1, Usuario usuario2) {
-        int x1 = usuario1.getLocalizacao().getX();
-        int y1 = usuario1.getLocalizacao().getY();
-        int x2 = usuario2.getLocalizacao().getX();
-        int y2 = usuario2.getLocalizacao().getY();
+    public static double getDistancia(Localizacao a, Localizacao b) {
+        int x1 = a.getX();
+        int y1 = a.getY();
+        int x2 = b.getX();
+        int y2 = b.getY();
 
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }

@@ -70,7 +70,7 @@ public class CorridaComum extends Corrida{
             this.getMotorista().getLocalizacao().setX(motoristaX);
             this.getMotorista().getLocalizacao().setY(motoristaY);
 
-            System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n", motoristaX, motoristaY, this.getLocalizacao().getDistancia(getPassageiro(),getMotorista()) );
+            System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n", motoristaX, motoristaY, this.getLocalizacao().getDistancia(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()) );
 
             // Atualização do tempo esperado
 
@@ -126,13 +126,8 @@ public class CorridaComum extends Corrida{
             this.getMotorista().getLocalizacao().setY(motoristaY);
 
 
-            double distancia = Math.sqrt(
-                    Math.pow(motoristaX - destinoX, 2) +
-                    Math.pow(motoristaY - destinoY, 2)
-            );
-
             System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros do destino final!\n",
-                    motoristaX, motoristaY, distancia);
+                    motoristaX, motoristaY, getLocalizacao().getDistancia(getPassageiro().getLocalizacao(), getLocalizacaoDestino()));
         }
     }
     public void finalizarCorrida() {

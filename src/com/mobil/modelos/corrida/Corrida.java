@@ -11,7 +11,6 @@ public abstract class Corrida {
     private Motorista motorista;
     private Passageiro passageiro;
     private Localizacao localizacao;
-    private Passageiro destino;
     private Localizacao localizacaoDestino;
 
     Scanner sc = new Scanner(System.in);
