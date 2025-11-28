@@ -28,10 +28,21 @@ public class Principal {
                     2 - Sair
                     """);
 
-            int resposta = sc.nextInt();
+            //Evitar de ler o \n e entrar em loop
+            String respostaStr = sc.nextLine();
+            int resposta = Integer.parseInt(respostaStr);
+
 
             switch (resposta) {
-                case 1 -> user.chamarCorrida(motoristas, "Comum", 50, 1);
+                case 1 -> {
+                    System.out.println("Escolha o tipo de corrida:");
+                    String tipoCorrida = sc.nextLine();
+                    switch (tipoCorrida) {
+                        case "Comum" -> user.chamarCorrida(motoristas, "Comum", 50, 1);
+                        case "Luxo" -> user.chamarCorrida(motoristas, "Luxo", 50, 1);
+                    }
+                    break;
+                }
                 case 2 -> programaRodando = false;
                 default -> System.out.println("Resposta inváida...");
             }

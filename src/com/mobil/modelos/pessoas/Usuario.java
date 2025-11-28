@@ -11,6 +11,7 @@ public abstract class Usuario {
     private String telefone;
     private int senha;
     private String chavePIX;
+    private String tipoCorrida;
 
     Localizacao localizacao;
     Avaliacao avaliacao;
@@ -39,6 +40,10 @@ public abstract class Usuario {
 
     public void setchavePIX(String chavePIX){
         this.chavePIX = chavePIX;
+    }
+
+    public void setTipoCorrida(String tipoCorrida){
+        this.tipoCorrida = tipoCorrida;
     }
 
     public String getNome() {

@@ -1,6 +1,7 @@
 package com.mobil.modelos.pessoas;
 
 import com.mobil.modelos.corrida.Corrida;
+import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.corrida.CorridaComum;
 import com.mobil.modelos.propriedades.Localizacao;
 
@@ -54,24 +55,28 @@ public class Passageiro extends Usuario{
         localizacao = new Localizacao(x, y);
     }
 
-    public static double distancia(double x1, double y1, double x2, double y2) {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
     public void chamarCorrida(ArrayList<Motorista> motoristas, String tipoCorrida, float dinheiroDisponivel, int mPagamento) {
         System.out.println("Primeiramente, digite sua senha para confimar sua ação: ");
         int senhaEscrita = sc.nextInt();
         if (senhaEscrita != this.getSenha()) {
             return;
         }
+
+        System.out.println("Digite as coordenadas do DESTINO:");
+        System.out.println("X: ");
+        int destX = sc.nextInt();
+        System.out.println("Y: ");
+        int destY = sc.nextInt();
+        Localizacao destino = new Localizacao(destX, destY);
+
+
         int indiceMotoristaMaisProximo = 0;
-        float menorDist = (float) distancia(localizacao.getX(), localizacao.getY(),
-                motoristas.get(0).localizacao.getX(), motoristas.get(0).localizacao.getY());
+        float menorDist = (float) Localizacao.getDistancia(this, motoristas.get(0));
+        indiceMotoristaMaisProximo = 0;
 
         for (int i = 1; i < motoristas.size(); i++) {
-            if (motoristas.get(i).getStatus() == "Disponível") {
-                float distAux = (float) distancia(localizacao.getX(), localizacao.getY(),
-                        motoristas.get(i).localizacao.getX(), motoristas.get(i).localizacao.getY());
+            if (motoristas.get(i).getStatus().equals("Disponível")) {
+                float distAux = (float) Localizacao.getDistancia(this, motoristas.get(i));
                 if (distAux < menorDist) {
                     menorDist = distAux;
                     indiceMotoristaMaisProximo = i;
@@ -80,7 +85,7 @@ public class Passageiro extends Usuario{
         }
 
         if (tipoCorrida == "Comum") {
-            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento, this);
+            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento, this, destino);
             System.out.println("Corrida comum criada.");
         }
 

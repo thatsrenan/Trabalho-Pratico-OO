@@ -3,6 +3,7 @@ package com.mobil.modelos.corrida;
 import com.mobil.modelos.pagamento.*;
 import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.pessoas.Passageiro;
+import com.mobil.modelos.propriedades.Localizacao;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,9 @@ public class CorridaComum extends Corrida{
 
     // mPagamento : 1 = Dinheiro, 2 = PIX, 3 = CartaoDeCredito
     public CorridaComum(int indiceMotorista, ArrayList<Motorista> motoristas,
-                        float dinheiroDisponivel, float distancia, int mPagamento, Passageiro passageiro) {
+                        float dinheiroDisponivel, float distancia, int mPagamento, Passageiro passageiro, Localizacao destino) {
         this.setPassageiro(passageiro);
+        this.setLocalizacaoDestino(destino);
         float precoCorrida = tarifaBaseComum + distancia * multiplicadorComum;
         this.setMotorista(motoristas.get(indiceMotorista)); // da a referência para o motorista mais próximo disponível
 
@@ -32,12 +34,13 @@ public class CorridaComum extends Corrida{
         System.out.printf("\nTudo pronto para iniciar a corrida.\nMotorista encontrado: %s", this.getMotorista().getNome());
         sc.nextLine();
         corridaChamada();
+        iniciarCorrida();
     }
 
     public void corridaChamada() {
         //
         System.out.println("Motorista a caminho.\nCarro: ");
-        System.out.printf("%s %s %s - %s", this.getMotorista().getVeiculo().getMarca(), this.getMotorista().getVeiculo().getModelo(),
+        System.out.printf("%s %s %s - %s \n", this.getMotorista().getVeiculo().getMarca(), this.getMotorista().getVeiculo().getModelo(),
                 this.getMotorista().getVeiculo().getCor(), this.getMotorista().getVeiculo().getPlaca());
 
         // mudar status do motorista e corrida
@@ -49,7 +52,7 @@ public class CorridaComum extends Corrida{
         int motoristaX = this.getMotorista().getLocalizacao().getX(), motoristaY = this.getMotorista().getLocalizacao().getY();
         int passageiroX = this.getPassageiro().getLocalizacao().getX(), passageiroY = this.getPassageiro().getLocalizacao().getY();
 
-        while (motoristaX != passageiroX && motoristaY != passageiroY) {
+        while (motoristaX != passageiroX || motoristaY != passageiroY) {
             // loop do motorista chegando no passageiro
 
             if (motoristaX > passageiroX) {
@@ -67,24 +70,71 @@ public class CorridaComum extends Corrida{
             this.getMotorista().getLocalizacao().setX(motoristaX);
             this.getMotorista().getLocalizacao().setY(motoristaY);
 
-            System.out.printf("Motorista está na posição [%d] [%d], a %d metros de você!", motoristaX, motoristaY);
+            System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n", motoristaX, motoristaY, this.getLocalizacao().getDistancia(getPassageiro(),getMotorista()) );
 
             // Atualização do tempo esperado
 
-
-            // System.out.println("Enter para continuar: ");
-            // sc.nextLine();
         }
 
         System.out.printf("\nO %s chegou no seu destino!", this.getMotorista().getNome());
         System.out.println("Enter para iniciar a corrida.");
-        sc.nextLine();
+        //Limpa buffer
+        if (sc.hasNextLine()) {
+            sc.nextLine(); // Limpa qualquer entrada pendente
+        }
+        String input = sc.nextLine();
     }
 
     public void iniciarCorrida() {
-        // loop da corrida
-    }
+        System.out.println("Corrida iniciada");
 
+        // Posição atual do passageiro (que está sendo levado)
+        int passageiroX = this.getPassageiro().getLocalizacao().getX();
+        int passageiroY = this.getPassageiro().getLocalizacao().getY();
+
+        // Posição do destino final
+        int destinoX = this.getLocalizacaoDestino().getX();
+        int destinoY = this.getLocalizacaoDestino().getY();
+
+        // O motorista também se move junto com o passageiro
+        int motoristaX = this.getMotorista().getLocalizacao().getX();
+        int motoristaY = this.getMotorista().getLocalizacao().getY();
+
+
+        while (passageiroX != destinoX || passageiroY != destinoY) {
+            // Movimento do PASSAGEIRO em direção ao destino
+            if (destinoX > passageiroX) {
+                passageiroX++;
+            } else if (destinoX < passageiroX) {
+                passageiroX--;
+            }
+
+            if (destinoY > passageiroY) {
+                passageiroY++;
+            } else if (destinoY < passageiroY) {
+                passageiroY--;
+            }
+
+            // Motorista se move JUNTO com o passageiro (mesma posição)
+            motoristaX = passageiroX;
+            motoristaY = passageiroY;
+
+            // Atualiza as posições
+            this.getPassageiro().getLocalizacao().setX(passageiroX);
+            this.getPassageiro().getLocalizacao().setY(passageiroY);
+            this.getMotorista().getLocalizacao().setX(motoristaX);
+            this.getMotorista().getLocalizacao().setY(motoristaY);
+
+
+            double distancia = Math.sqrt(
+                    Math.pow(motoristaX - destinoX, 2) +
+                    Math.pow(motoristaY - destinoY, 2)
+            );
+
+            System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros do destino final!\n",
+                    motoristaX, motoristaY, distancia);
+        }
+    }
     public void finalizarCorrida() {
         // Pagamento
     }
