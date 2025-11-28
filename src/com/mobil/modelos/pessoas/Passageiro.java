@@ -67,8 +67,20 @@ public class Passageiro extends Usuario{
         int destX = sc.nextInt();
         System.out.println("Y: ");
         int destY = sc.nextInt();
-        Localizacao destino = new Localizacao(destX, destY);
 
+        // EXCEÇÃO do X
+        while(destX < 0 || destX > localizacao.xMax) {
+            System.out.println("Coordenada X inválida. Digite outra localização:");
+            destX = sc.nextInt();
+        }
+
+        // EXCEÇÃO do Y
+        while(destY < 0 || destY > localizacao.yMax) {
+            System.out.println("Coordenada Y inválida. Digite outra localização:");
+            destY = sc.nextInt();
+        }
+
+        Localizacao destino = new Localizacao(destX, destY);
 
         int indiceMotoristaMaisProximo = 0;
         float menorDist = (float) Localizacao.getDistancia(this, motoristas.get(0));

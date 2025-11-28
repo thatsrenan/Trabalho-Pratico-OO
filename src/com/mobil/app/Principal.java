@@ -35,7 +35,9 @@ public class Principal {
 
             switch (resposta) {
                 case 1 -> {
-                    System.out.println("Escolha o tipo de corrida:");
+                    System.out.println("Escolha o tipo de corrida:\n" +
+                            "-Comum\n" +
+                            "-De Luxo");
                     String tipoCorrida = sc.nextLine();
                     switch (tipoCorrida) {
                         case "Comum" -> user.chamarCorrida(motoristas, "Comum", 50, 1);
