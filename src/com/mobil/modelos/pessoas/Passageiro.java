@@ -56,13 +56,13 @@ public class Passageiro extends Usuario{
     }
 
     public void chamarCorrida(ArrayList<Motorista> motoristas, String tipoCorrida, float dinheiroDisponivel, int mPagamento) {
-        System.out.println("Primeiramente, digite sua senha para confimar sua ação: ");
+        System.out.println("Digite sua senha para confimar sua ação: ");
         int senhaEscrita = sc.nextInt();
         if (senhaEscrita != this.getSenha()) {
             return;
         }
 
-        System.out.println("Digite as coordenadas do DESTINO:");
+        System.out.println("Digite as coordenadas do DESTINO (0 - 100):");
         System.out.println("X: ");
         int destX = sc.nextInt();
         System.out.println("Y: ");
@@ -97,11 +97,11 @@ public class Passageiro extends Usuario{
         }
 
         if (tipoCorrida == "Comum") {
-            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas,dinheiroDisponivel, menorDist, mPagamento, this, destino);
+            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas, dinheiroDisponivel, menorDist, mPagamento, this, destino);
             System.out.println("Corrida comum criada.");
+        } else if (tipoCorrida == "De Luxo") {
+            // criar corrida de luxo
         }
 
-
-        // AGORA CRIAR A CORRIDA
     }
 }

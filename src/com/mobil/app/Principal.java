@@ -19,31 +19,30 @@ public class Principal {
                 "carlos.hernqiue@gmail.com",50, 80, "GKP3H12", "Fiat", "Uno", "Vermelho", 2016, "04123456789", 2028));
 
         boolean programaRodando = true;
+
         // mPagamento: 1 = Dinheiro, 2 = PIX,, 3 = CartaoDeCredito
         while(programaRodando) {
             System.out.println("""
+                    
                     MOBIL
-                    Digite o número correspondente para prosseguir:
+                    Digite a ação desejada:
                     1 - Chamar corrida
-                    2 - Sair
-                    """);
+                    2 - Sair""");
 
             //Evitar de ler o \n e entrar em loop
             String respostaStr = sc.nextLine();
             int resposta = Integer.parseInt(respostaStr);
 
-
             switch (resposta) {
                 case 1 -> {
-                    System.out.println("Escolha o tipo de corrida:\n" +
-                            "-Comum\n" +
-                            "-De Luxo");
-                    String tipoCorrida = sc.nextLine();
+                    System.out.println("\nEscolha o tipo de corrida:\n" +
+                            "1 - Comum\n" +
+                            "2 - De Luxo");
+                    int tipoCorrida = sc.nextInt();
                     switch (tipoCorrida) {
-                        case "Comum" -> user.chamarCorrida(motoristas, "Comum", 50, 1);
-                        case "Luxo" -> user.chamarCorrida(motoristas, "Luxo", 50, 1);
+                        case 1 -> user.chamarCorrida(motoristas, "Comum", 50, 1);
+                        case 2 -> user.chamarCorrida(motoristas, "Luxo", 50, 1);
                     }
-                    break;
                 }
                 case 2 -> programaRodando = false;
                 default -> System.out.println("Resposta inváida...");
