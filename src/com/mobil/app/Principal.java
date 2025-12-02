@@ -31,7 +31,20 @@ public class Principal {
 
             //Evitar de ler o \n e entrar em loop
             String respostaStr = sc.nextLine();
-            int resposta = Integer.parseInt(respostaStr);
+            int resposta;
+
+            // Exception String vazia
+            while (respostaStr.trim().isEmpty()) {
+                System.out.println("Entrada inválida. Digite um número:");
+                respostaStr = sc.nextLine();
+            }
+
+            try {
+                resposta = Integer.parseInt(respostaStr);
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Digite um número válido.");
+                continue; // Volta para o início do loop
+            }
 
             switch (resposta) {
                 case 1 -> {

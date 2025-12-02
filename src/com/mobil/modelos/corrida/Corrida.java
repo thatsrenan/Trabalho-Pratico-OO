@@ -46,4 +46,7 @@ public abstract class Corrida {
     public void setPassageiro(Passageiro passageiro) {
         this.passageiro = passageiro;
     }
+
+
+
 }
