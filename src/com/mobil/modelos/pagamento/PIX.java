@@ -10,6 +10,12 @@ public class PIX extends MetodoDePagamento {
 
     @Override
     public void pagar() {
+        if (getDinheiroDisponivel() < getPrecoCorrida()) {
+            // Exceção
+        } else {
+            System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar o PIX: \n");
 
+            // IMPLEMENTAR
+        }
     }
 }

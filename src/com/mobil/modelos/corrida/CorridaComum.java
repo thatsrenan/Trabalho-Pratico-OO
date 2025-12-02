@@ -96,7 +96,7 @@ public class CorridaComum extends Corrida{
 
                 System.out.printf("%d minutos para ele chegar!", calcularTempo(getPassageiro().getLocalizacao(), getMotorista().getLocalizacao()));
 
-                System.out.println("Enter para continuar.");
+                System.out.println("\nEnter para continuar.");
                 if (sc.hasNextLine()) {
                     sc.nextLine(); // Limpa qualquer entrada pendente
                 }
@@ -117,6 +117,10 @@ public class CorridaComum extends Corrida{
 
     public void corrida() {
         System.out.println("Corrida iniciada.");
+
+        // Atualização dos status
+        this.setStatus("Em corrida");
+        this.getMotorista().setStatus("Em corrida");
 
         // Posição atual do passageiro (que está sendo levado)
         int passageiroX = this.getPassageiro().getLocalizacao().getX();
@@ -170,14 +174,22 @@ public class CorridaComum extends Corrida{
         }
 
         finalizarCorrida();
+        System.out.println("Enter para continuar");
+        if (sc.hasNextLine()) {
+            sc.nextLine(); // Limpa qualquer entrada pendente
+        }
     }
     public void finalizarCorrida() {
         System.out.println("Você chegou ao seu destino!");
         metodoDePagamento.pagar();
+
+        // Atualização de status
+        this.setStatus("Finalizada");
+        this.getMotorista().setStatus("Disponível");
     }
 
     public void cancelarCorrida() {
-
+        System.out.println("Corrida cancelada.");
     }
 
     public int calcularTempo(Localizacao p, Localizacao m) {

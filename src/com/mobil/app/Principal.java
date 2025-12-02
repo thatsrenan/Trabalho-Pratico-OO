@@ -42,8 +42,8 @@ public class Principal {
 
 
                     System.out.println("Escolha o método de pagamento que deseja usar:\n" +
-                            "1 - Dinheiro Físico" +
-                            "2 - PIX" +
+                            "1 - Dinheiro Físico\n" +
+                            "2 - PIX\n" +
                             "3 - Cartão de Crédito\n");
                     int metodoDePagamentoEscolhido = sc.nextInt();
 
