@@ -9,7 +9,7 @@ public class Dinheiro extends MetodoDePagamento{
 
     @Override // pagar é no final da Corrida
     public void pagar() {
-        System.out.printf("PAGAMENTO POR DINHEIRO FÍSICO");
+        System.out.println("\nPAGAMENTO POR DINHEIRO FÍSICO");
 
         if (this.getDinheiroDisponivel() < this.getPrecoCorrida()) {
 

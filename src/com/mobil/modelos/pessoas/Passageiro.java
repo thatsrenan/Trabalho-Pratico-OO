@@ -97,7 +97,7 @@ public class Passageiro extends Usuario{
         }
 
         if (tipoCorrida == "Comum") {
-            corrida = new CorridaComum(indiceMotoristaMaisProximo, motoristas, dinheiroDisponivel, menorDist, mPagamento, this, destino);
+            corrida = new CorridaComum(motoristas.get(indiceMotoristaMaisProximo), dinheiroDisponivel, mPagamento, this, destino);
             System.out.println("Corrida comum criada.");
         } else if (tipoCorrida == "De Luxo") {
             // criar corrida de luxo

@@ -14,12 +14,14 @@ public class CorridaComum extends Corrida{
     private MetodoDePagamento metodoDePagamento;
 
     // mPagamento : 1 = Dinheiro, 2 = PIX, 3 = CartaoDeCredito
-    public CorridaComum(int indiceMotorista, ArrayList<Motorista> motoristas,
-                        float dinheiroDisponivel, float distancia, int mPagamento, Passageiro passageiro, Localizacao destino) {
+    public CorridaComum(Motorista motorista,
+                        float dinheiroDisponivel, int mPagamento, Passageiro passageiro, Localizacao destino) {
         this.setPassageiro(passageiro);
         this.setLocalizacaoDestino(destino);
-        float precoCorrida = tarifaBaseComum + distancia * multiplicadorComum;
-        this.setMotorista(motoristas.get(indiceMotorista)); // da a referência para o motorista mais próximo disponível
+        float distancia = (float) Localizacao.getDistancia(getPassageiro().getLocalizacao(), destino);
+        float precoCorrida = tarifaBaseComum + distancia * (float) multiplicadorComum;
+        this.setMotorista(motorista); // da a referência para o motorista mais próximo disponível
+
 
         switch (mPagamento) {
             case 1 -> metodoDePagamento = new Dinheiro(dinheiroDisponivel, precoCorrida);
@@ -44,12 +46,12 @@ public class CorridaComum extends Corrida{
                     respostaValidaNaoComputada = false;
                 }
                 case 2 -> {
-                    System.out.println("Corrida cancelada.\n");
+                    System.out.println("Corrida cancelada.\n\n");
                     cancelarCorrida();
                     respostaValidaNaoComputada = false;
                 }
                 default -> {
-                    System.out.println("Resposta inválida...");
+                    System.out.println("Resposta inválida...\n");
                 }
             }
         }
@@ -90,7 +92,7 @@ public class CorridaComum extends Corrida{
             this.getMotorista().getLocalizacao().setY(motoristaY);
 
             // o contador é para não spamar atualizações do motorista no terminal
-            if (motoristaX != passageiroX && motoristaY != passageiroY && contador > 4) {
+            if (motoristaX != passageiroX && motoristaY != passageiroY && contador > 1) {
                 System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n",
                         motoristaX, motoristaY, this.getLocalizacao().getDistancia(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()));
                 contador = -1;
@@ -150,7 +152,7 @@ public class CorridaComum extends Corrida{
             motoristaX = passageiroX;
             motoristaY = passageiroY;
 
-            if (passageiroX != destinoX && passageiroY != destinoY && contador > 2) {
+            if (passageiroX != destinoX && passageiroY != destinoY && contador > 1) {
                 System.out.printf("Vocês estão na posição [%d] [%d]. %d minutos para chegar ao destino!\n",
                         motoristaX, motoristaY, calcularTempo(getPassageiro().getLocalizacao(), getLocalizacaoDestino()));
                 contador = -1;
@@ -173,7 +175,8 @@ public class CorridaComum extends Corrida{
         finalizarCorrida();
     }
     public void finalizarCorrida() {
-        // Pagamento
+        System.out.println("Você chegou ao seu destino!");
+        metodoDePagamento.pagar();
     }
 
     public void cancelarCorrida() {
