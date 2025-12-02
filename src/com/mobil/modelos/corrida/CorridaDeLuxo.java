@@ -15,6 +15,6 @@ public class CorridaDeLuxo extends Corrida{
 
     @Override
     public float calcularPrecoCorrida(float distancia) {
-        return 0;
+        return tarifaBaseLuxo + distancia * multiplicadorLuxo;
     }
 }
