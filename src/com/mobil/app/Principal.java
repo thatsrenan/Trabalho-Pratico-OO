@@ -41,11 +41,10 @@ public class Principal {
                     int tipoCorrida = sc.nextInt();
 
 
-                    System.out.println("Escolha o método de pagamento que deseja usar:" +
-                            "1 - Cartão de Crédito" +
-                            "2 - Dinheiro Físico" +
-                            "3 - Método de Pagamento" +
-                            "4 - PIX");
+                    System.out.println("Escolha o método de pagamento que deseja usar:\n" +
+                            "1 - Dinheiro Físico" +
+                            "2 - PIX" +
+                            "3 - Cartão de Crédito\n");
                     int metodoDePagamentoEscolhido = sc.nextInt();
 
 
@@ -53,8 +52,8 @@ public class Principal {
                     float dinheiroDisponivel = sc.nextFloat();
 
                     switch (tipoCorrida) {
-                        case 1 -> user.chamarCorrida(motoristas, "Comum", dinheiroDisponivel, 1);
-                        case 2 -> user.chamarCorrida(motoristas, "Luxo", dinheiroDisponivel, 1);
+                        case 1 -> user.chamarCorrida(motoristas, "Comum", dinheiroDisponivel, metodoDePagamentoEscolhido);
+                        case 2 -> user.chamarCorrida(motoristas, "Luxo", dinheiroDisponivel, metodoDePagamentoEscolhido);
                     }
                 }
                 case 2 -> programaRodando = false;

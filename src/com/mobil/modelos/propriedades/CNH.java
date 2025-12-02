@@ -10,7 +10,7 @@ public class CNH {
         this.anoDeValidade = anoDeValidade;
     }
 
-    public boolean getValidadeCNH() {
+    public boolean CNHehValida() {
         if (anoDeValidade > anoAtual) {
             return false;
         }
