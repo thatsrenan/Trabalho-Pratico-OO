@@ -73,4 +73,8 @@ public abstract class Usuario {
     public Localizacao getLocalizacao() {
         return localizacao;
     }
+
+    public void setLocalizacao(Localizacao localizacao) {
+        this.localizacao = localizacao;
+    }
 }
