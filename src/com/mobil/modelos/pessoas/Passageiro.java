@@ -35,7 +35,7 @@ public class Passageiro extends Usuario{
             this.setSenha(sc.nextInt());
         }
 
-        System.out.println("Digite as coordenadas de sua posição na cidade.\nMínimo 0 - Máximo 100\nX: ");
+        System.out.println("\nDigite as coordenadas de sua posição na cidade.\nMínimo 0 - Máximo 100\nX: ");
         int x = sc.nextInt();
 
         // EXCEÇÃO do X
@@ -57,7 +57,7 @@ public class Passageiro extends Usuario{
     }
 
     public void chamarCorrida(ArrayList<Motorista> motoristas, String tipoCorrida, float dinheiroDisponivel, int mPagamento) {
-        System.out.println("Digite sua senha para confimar sua ação: ");
+        System.out.println("\nDigite sua senha para prosseguir: ");
         int senhaEscrita = sc.nextInt();
         if (senhaEscrita != this.getSenha()) {
             return;
@@ -102,6 +102,7 @@ public class Passageiro extends Usuario{
             System.out.println("Corrida comum criada.");
         } else if (tipoCorrida == "De Luxo") {
             corrida = new CorridaDeLuxo(motoristas.get(indiceMotoristaMaisProximo), dinheiroDisponivel, mPagamento, this, destino);
+            System.out.println("Corrida de Luxo criada.");
         }
 
     }

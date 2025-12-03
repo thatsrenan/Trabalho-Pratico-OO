@@ -48,28 +48,48 @@ public class Principal {
 
             switch (resposta) {
                 case 1 -> {
-                    System.out.println("\nEscolha o tipo de corrida:\n" +
-                            "1 - Comum\n" +
-                            "2 - De Luxo");
-                    int tipoCorrida = Integer.parseInt(sc.nextLine());
+                    int tipoCorrida = 0;
+                    int metodoDePagamentoEscolhido = 0;
+
+                    boolean respostaAceita = false;
+                    while(!respostaAceita) {
+                        System.out.println("\nEscolha o tipo de corrida:\n" +
+                                "1 - Comum\n" +
+                                "2 - De Luxo");
+                        tipoCorrida = Integer.parseInt(sc.nextLine());
+                        if (tipoCorrida != 1 && tipoCorrida != 2) {
+                            System.out.println("Opção inexistente.");
+                        } else {
+                            respostaAceita = true;
+                        }
+                    }
+
+                    respostaAceita = false;
+                    while(!respostaAceita) {
+                        System.out.println("\nEscolha o método de pagamento que deseja usar:\n" +
+                                "1 - Dinheiro Físico\n" +
+                                "2 - PIX\n" +
+                                "3 - Cartão de Crédito");
+                        metodoDePagamentoEscolhido = Integer.parseInt(sc.nextLine());
+                        if (metodoDePagamentoEscolhido != 1 && metodoDePagamentoEscolhido != 2 && metodoDePagamentoEscolhido != 3) {
+                            System.out.println("Opção inexistente.");
+                        } else {
+                            respostaAceita = true;
+                        }
+                    }
 
 
-                    System.out.println("Escolha o método de pagamento que deseja usar:\n" +
-                            "1 - Dinheiro Físico\n" +
-                            "2 - PIX\n" +
-                            "3 - Cartão de Crédito");
-                    int metodoDePagamentoEscolhido = Integer.parseInt(sc.nextLine());
-
-                    System.out.println("Digite quantos reais você tem disponível no método de pagamento escolhido: ");
+                    System.out.println("\nDigite quantos reais você tem disponível no método de pagamento escolhido: ");
                     float dinheiroDisponivel = Float.parseFloat(sc.nextLine());
 
                     switch (tipoCorrida) {
                         case 1 -> user.chamarCorrida(motoristas, "Comum", dinheiroDisponivel, metodoDePagamentoEscolhido);
-                        case 2 -> user.chamarCorrida(motoristas, "Luxo", dinheiroDisponivel, metodoDePagamentoEscolhido);
+                        case 2 -> user.chamarCorrida(motoristas, "De Luxo", dinheiroDisponivel, metodoDePagamentoEscolhido);
                     }
                 }
+
                 case 2 -> programaRodando = false;
-                default -> System.out.println("Resposta inváida...");
+                default -> System.out.println("Opção inexistente.");
             }
         }
 

@@ -217,11 +217,8 @@ public abstract class Corrida {
         }
 
         finalizarCorrida();
-        System.out.println("Enter para continuar");
-        if (sc.hasNextLine()) {
-            sc.nextLine(); // Limpa qualquer entrada pendente
-        }
     }
+
     public void finalizarCorrida() {
         System.out.println("Você chegou ao seu destino!");
         metodoDePagamento.pagar();

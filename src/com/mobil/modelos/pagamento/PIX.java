@@ -16,7 +16,7 @@ public class PIX extends MetodoDePagamento {
         if (getDinheiroDisponivel() < getPrecoCorrida()) {
             // Exceção
         } else {
-            System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar o PIX: \n");
+            System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar o PIX: ");
 
             for (int i = 0; i < 3; i++) {
                 int resposta = sc.nextInt();
