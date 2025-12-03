@@ -1,6 +1,7 @@
 package com.mobil.modelos.pessoas;
 
 import com.mobil.modelos.corrida.Corrida;
+import com.mobil.modelos.corrida.CorridaDeLuxo;
 import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.corrida.CorridaComum;
 import com.mobil.modelos.propriedades.Localizacao;
@@ -100,7 +101,7 @@ public class Passageiro extends Usuario{
             corrida = new CorridaComum(motoristas.get(indiceMotoristaMaisProximo), dinheiroDisponivel, mPagamento, this, destino);
             System.out.println("Corrida comum criada.");
         } else if (tipoCorrida == "De Luxo") {
-            // criar corrida de luxo
+            corrida = new CorridaDeLuxo(motoristas.get(indiceMotoristaMaisProximo), dinheiroDisponivel, mPagamento, this, destino);
         }
 
     }

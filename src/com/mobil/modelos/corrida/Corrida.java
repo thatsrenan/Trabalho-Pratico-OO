@@ -65,8 +65,8 @@ public abstract class Corrida {
         // mPagamento : 1 = Dinheiro, 2 = PIX, 3 = CartaoDeCredito
         switch (mPagamento) {
             case 1 -> metodoDePagamento = new Dinheiro(dinheiroDisponivel, precoCorrida, passageiro);
-            case 2 -> metodoDePagamento = new PIX(dinheiroDisponivel, precoCorrida, passageiro); // não implementado
-            case 3 -> metodoDePagamento = new CartaoDeCredito(dinheiroDisponivel, precoCorrida, passageiro); // não implementado
+            case 2 -> metodoDePagamento = new PIX(dinheiroDisponivel, precoCorrida, passageiro);
+            case 3 -> metodoDePagamento = new CartaoDeCredito(dinheiroDisponivel, precoCorrida, passageiro);
         }
 
         System.out.printf("\nTudo pronto para iniciar a corrida.\nR$%.2f por %.2f km\nMotorista encontrado: %s\n", precoCorrida, distancia,this.getMotorista().getNome());

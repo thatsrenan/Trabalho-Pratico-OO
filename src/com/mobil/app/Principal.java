@@ -51,18 +51,17 @@ public class Principal {
                     System.out.println("\nEscolha o tipo de corrida:\n" +
                             "1 - Comum\n" +
                             "2 - De Luxo");
-                    int tipoCorrida = sc.nextInt();
+                    int tipoCorrida = Integer.parseInt(sc.nextLine());
 
 
                     System.out.println("Escolha o método de pagamento que deseja usar:\n" +
                             "1 - Dinheiro Físico\n" +
                             "2 - PIX\n" +
-                            "3 - Cartão de Crédito\n");
-                    int metodoDePagamentoEscolhido = sc.nextInt();
-
+                            "3 - Cartão de Crédito");
+                    int metodoDePagamentoEscolhido = Integer.parseInt(sc.nextLine());
 
                     System.out.println("Digite quantos reais você tem disponível no método de pagamento escolhido: ");
-                    float dinheiroDisponivel = sc.nextFloat();
+                    float dinheiroDisponivel = Float.parseFloat(sc.nextLine());
 
                     switch (tipoCorrida) {
                         case 1 -> user.chamarCorrida(motoristas, "Comum", dinheiroDisponivel, metodoDePagamentoEscolhido);
