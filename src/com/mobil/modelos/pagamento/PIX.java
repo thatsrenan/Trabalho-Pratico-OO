@@ -11,12 +11,27 @@ public class PIX extends MetodoDePagamento {
 
     @Override
     public void pagar() {
+        System.out.println("\nPAGAMENTO POR PIX");
+
         if (getDinheiroDisponivel() < getPrecoCorrida()) {
             // Exceção
         } else {
             System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar o PIX: \n");
 
-            // IMPLEMENTAR
+            for (int i = 0; i < 3; i++) {
+                int resposta = sc.nextInt();
+                if (resposta != this.passageiro.getSenha()) {
+                    if (i == 2) {
+                        System.out.println("Seu pix foi bloqueado pelo banco.");
+                        // EXCEÇÃO
+                    } else {
+                        System.out.printf("Senha errada. Você tem mais %d tentativas!\n", 2 - i);
+
+                    }
+                } else {
+                    System.out.println("Corrida devidamente paga.");
+                }
+            }
         }
     }
 }
