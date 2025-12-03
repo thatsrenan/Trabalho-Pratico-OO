@@ -11,9 +11,6 @@ public class CNH {
     }
 
     public boolean CNHehValida() {
-        if (anoDeValidade > anoAtual) {
-            return false;
-        }
-        return true;
+        return (anoDeValidade >= anoAtual);
     }
 }

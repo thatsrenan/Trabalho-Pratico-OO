@@ -58,10 +58,11 @@ public class PassageiroServico {
         passageiro.setCPF(CPF);
         passageiro.setTelefone(telefone);
         passageiro.setSenha(senha);
-        passageiro.setLocalizacao(new Localizacao(x, y));
+        passageiro.setLocalizacao(localizacaoServico.criarLocalizacao(x, y));
         return passageiro;
     }
 
+    // Senha de no mínimo e máximo 4 dígitos
     private int solicitarSenhaValida() {
         int senha;
         while (true) {

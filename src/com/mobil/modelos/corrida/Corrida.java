@@ -13,9 +13,9 @@ public abstract class Corrida {
     private String status; // Motorista a caminho, Em andamento, Finalizando
     private Motorista motorista;
     private Passageiro passageiro;
-    private Localizacao localizacao;
     private Localizacao localizacaoDestino;
     private MetodoDePagamento metodoDePagamento;
+    private static final int VELOCIDADE_MEDIA_KMH = 60;
 
     Scanner sc = new Scanner(System.in);
 
@@ -233,9 +233,8 @@ public abstract class Corrida {
     }
 
     public int calcularTempo(Localizacao p, Localizacao m) {
-        // velocidade média: 60 km/h
-        float distancia = (float) Localizacao.getDistancia(p, m);
-        return (int)((distancia/60) * 60); // return em minutos int
+        float distanciaKm = (float) Localizacao.getDistancia(p, m);
+        return (int)((distanciaKm / VELOCIDADE_MEDIA_KMH) * 60); // Retorna em minutos
     }
 
 }

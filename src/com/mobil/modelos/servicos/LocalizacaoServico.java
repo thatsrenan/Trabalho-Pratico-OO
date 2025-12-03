@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class LocalizacaoServico {
     private Scanner sc = new Scanner(System.in);
 
-    public Localizacao criarLocalizacao(int x, int y) {
+    public static Localizacao criarLocalizacao(int x, int y) {
         validarCoordenadas(x, y);
         return new Localizacao(x, y);
     }
@@ -25,7 +25,7 @@ public class LocalizacaoServico {
         return new Localizacao(x, y);
     }
 
-    private void validarCoordenadas(int x, int y) {
+    private static void validarCoordenadas(int x, int y) {
         if (x < 0 || x > Localizacao.xMax || y < 0 || y > Localizacao.yMax) {
             throw new IllegalArgumentException(
                     "Coordenadas inválidas. X e Y devem estar entre 0 e " + Localizacao.xMax

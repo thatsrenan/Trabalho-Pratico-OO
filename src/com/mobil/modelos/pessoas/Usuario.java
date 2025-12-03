@@ -2,21 +2,15 @@ package com.mobil.modelos.pessoas;
 
 import com.mobil.modelos.propriedades.*;
 
-import java.util.Scanner;
-
 public abstract class Usuario {
     private String nome;
     private String email;
     private String CPF;
     private String telefone;
     private int senha;
-    private String chavePIX;
-    private String tipoCorrida;
 
     Localizacao localizacao;
     Avaliacao avaliacao;
-
-    Scanner sc = new Scanner(System.in);
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -38,14 +32,6 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
-    public void setchavePIX(String chavePIX){
-        this.chavePIX = chavePIX;
-    }
-
-    public void setTipoCorrida(String tipoCorrida){
-        this.tipoCorrida = tipoCorrida;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -64,10 +50,6 @@ public abstract class Usuario {
 
     public int getSenha() {
         return senha;
-    }
-
-    public String getchavePIX(){
-        return this.chavePIX;
     }
 
     public Localizacao getLocalizacao() {

@@ -4,8 +4,8 @@ import com.mobil.modelos.propriedades.Localizacao;
 
 public class Passageiro extends Usuario {
 
-
     public Passageiro() {
+
     }
 
     public Passageiro(String nome, String email, String CPF, String telefone,

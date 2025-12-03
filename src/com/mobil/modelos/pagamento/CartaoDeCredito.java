@@ -26,7 +26,6 @@ public class CartaoDeCredito extends MetodoDePagamento {
                         // EXCEÇÃO
                     } else {
                         System.out.printf("Senha errada. Você tem mais %d tentativas!\n", 2 - i);
-
                     }
                 } else {
                     System.out.println("Corrida devidamente paga.");

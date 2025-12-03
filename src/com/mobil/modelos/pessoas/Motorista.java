@@ -1,5 +1,6 @@
 package com.mobil.modelos.pessoas;
 import com.mobil.modelos.propriedades.*;
+import com.mobil.modelos.servicos.*;
 
 public class Motorista extends Usuario{
     private String status; // Em andamento, Finalizada, etc
@@ -13,7 +14,7 @@ public class Motorista extends Usuario{
         this.setCPF(CPF);
         this.setTelefone(telefone);
         this.setSenha(senha);
-        localizacao = new Localizacao(x, y);
+        localizacao = LocalizacaoServico.criarLocalizacao(x, y);
         veiculo = new Veiculo(placa, marca, modelo, cor, ano);
         CNH = new CNH(numeroCNH, anoDeValidade);
         status = "Disponível";

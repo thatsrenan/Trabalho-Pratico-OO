@@ -353,8 +353,7 @@ public class PrincipalServico {
                     "║ 1 - Alterar dados cadastrais             ║\n" +
                     "║ 2 - Atualizar localização                ║\n" +
                     "║ 3 - Alterar senha                        ║\n" +
-                    "║ 4 - Configurar PIX                       ║\n" +
-                    "║ 5 - Voltar ao menu principal             ║\n" +
+                    "║ 4 - Voltar ao menu principal             ║\n" +
                     "╚══════════════════════════════════════════╝\n" +
                     "\nEscolha uma opção: ");
 
@@ -362,7 +361,6 @@ public class PrincipalServico {
 
             switch (opcao) {
                 case 1:
-
                     passageiroServico.processarMenuPassageiro(usuarioLogado);
                     break;
 
@@ -375,10 +373,6 @@ public class PrincipalServico {
                     break;
 
                 case 4:
-                    configurarChavePix();
-                    break;
-
-                case 5:
                     noMenuConfig = false;
                     break;
 
@@ -435,21 +429,7 @@ public class PrincipalServico {
         pausar();
     }
 
-    private void configurarChavePix() {
-        System.out.println("\n=== CONFIGURAR CHAVE PIX ===");
-        System.out.print("Digite sua chave PIX (email/telefone/CPF): ");
-        String chavePix = sc.nextLine();
-
-        if (!chavePix.trim().isEmpty()) {
-            usuarioLogado.setchavePIX(chavePix);
-            System.out.println("✓ Chave PIX configurada: " + chavePix);
-        } else {
-            System.out.println("✗ Chave PIX inválida!");
-        }
-        pausar();
-    }
-
-    //
+    // Confirmar saída do Mobil
     private boolean confirmarSaida() {
         System.out.println("\nDeseja realmente sair? (S/N)");
         String confirmacao = sc.nextLine().toUpperCase();
