@@ -30,7 +30,4 @@ public abstract class MetodoDePagamento {
         this.dinheiroDisponivel = dinheiroDisponivel;
     }
 
-    public void setPrecoCorrida(float precoCorrida) {
-        this.precoCorrida = precoCorrida;
-    }
 }

@@ -18,16 +18,7 @@ public class Passageiro extends Usuario {
         this.localizacao = localizacao;
     }
 
-    // Método para definir localização (mantido para compatibilidade)
     public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
-    }
-
-    // Método simplificado para chamar corrida (se ainda necessário)
-    // A maioria da lógica agora está no PassageiroServico
-    public void realizarChamadaBasica() {
-        System.out.println("Passageiro " + this.getNome() + " está pronto para chamar uma corrida.");
-        System.out.println("Localização atual: [" + this.getLocalizacao().getX() +
-                ", " + this.getLocalizacao().getY() + "]");
     }
 }

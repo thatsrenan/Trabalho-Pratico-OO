@@ -129,15 +129,18 @@ public class PrincipalServico {
 
             switch (opcao) {
                 case 1:
+                    // CHAMA A CORRIDA
                     gerenciarChamadaCorrida();
                     break;
 
                 case 2:
+                    // MOSTRA AS INFORMAÇÕES DO USUÁRIO
                     passageiroServico.exibirInformacoesDetalhadas(usuarioLogado);
                     pausar();
                     break;
 
                 case 3:
+                    // MOSTRA OS MOTORISTAS DISPONÍVEIS
                     exibirMotoristasDisponiveis();
                     pausar();
                     break;
@@ -148,21 +151,24 @@ public class PrincipalServico {
                     break;
 
                 case 5:
+                    // CONFIGURAÇÃO DAS INFORMAÇÕES DO USUÁRIO
                     gerenciarConfiguracoesUsuario();
                     break;
 
                 case 6:
+                    // FECHA O MOBIL
                     sistemaAtivo = confirmarSaida();
                     break;
 
                 default:
+                    // Caso default
                     System.out.println("Opção inválida! Tente novamente.");
                     pausar();
             }
         }
     }
 
-    //
+    // Chama a corrida
     private void gerenciarChamadaCorrida() {
         appServico.limparConsole();
         System.out.println("\n" +
@@ -182,7 +188,7 @@ public class PrincipalServico {
         float dinheiroDisponivel = informarValorDisponivel(metodoPagamento);
         if (dinheiroDisponivel == -1) return;
 
-        // 4. Chamar corrida usando o serviço
+        // 4. Chama corrida usando o PassageiroServico
         Corrida corrida = passageiroServico.chamarCorrida(
                 usuarioLogado,
                 motoristas,
@@ -191,6 +197,7 @@ public class PrincipalServico {
                 metodoPagamento
         );
 
+        // se der pau, mostra a mensagem
         if (corrida != null) {
             System.out.println("\n✓ Corrida solicitada com sucesso!");
             historicoCorridas.add(corrida);
@@ -201,7 +208,7 @@ public class PrincipalServico {
         pausar();
     }
 
-    // Menu de Tipos de Corrida disponíveis no Mobil
+    // Menu de Tipos de Corrida disponíveis no Mobil, recebe a resposta e retorna o tipo escolhido
     private String selecionarTipoCorrida() {
         System.out.println("\n=== TIPO DE CORRIDA ===\n");
         System.out.println("1 - Corrida Comum");
@@ -221,6 +228,7 @@ public class PrincipalServico {
             case 3: return null;
             default:
                 System.out.println("Opção inválida!");
+                // Recursividade pro caso default
                 return selecionarTipoCorrida();
         }
     }
@@ -265,6 +273,7 @@ public class PrincipalServico {
             return valor;
         } catch (Exception e) {
             System.out.println("Valor inválido! Use números (ex: 50.00)");
+            // Recursividade pro caso default
             return informarValorDisponivel(metodoPagamento);
         }
     }
@@ -278,6 +287,7 @@ public class PrincipalServico {
                 "║       MOTORISTAS DISPONÍVEIS             ║\n" +
                 "╚══════════════════════════════════════════╝\n");
 
+        // Checa se há motoristas, e aí sim mostra os motoristas
         if (disponiveis.isEmpty()) {
             System.out.println("Nenhum motorista disponível no momento.");
             System.out.println("Tente novamente mais tarde.");
@@ -352,6 +362,7 @@ public class PrincipalServico {
 
             switch (opcao) {
                 case 1:
+
                     passageiroServico.processarMenuPassageiro(usuarioLogado);
                     break;
 

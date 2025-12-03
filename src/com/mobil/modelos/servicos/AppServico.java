@@ -58,9 +58,21 @@ public class AppServico {
                 "\nDigite a opção desejada: ");
     }
 
+    // Limpa o console
     public void limparConsole() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // Para Unix/Linux/Mac
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            // Caso default, imprime várias linhas vazias (parece que apagou o console)
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
         }
     }
 }
