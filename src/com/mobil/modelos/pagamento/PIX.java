@@ -1,11 +1,12 @@
 package com.mobil.modelos.pagamento;
 
+import com.mobil.modelos.pessoas.Passageiro;
+
 public class PIX extends MetodoDePagamento {
     private String chavePIX;
 
-    public PIX(float dinheiroDisponivel, float precoCorrida){
-        this.setDinheiroDisponivel(dinheiroDisponivel);
-        this.setPrecoCorrida(precoCorrida);
+    public PIX(float dinheiroDisponivel, float precoCorrida, Passageiro passageiro){
+        super(dinheiroDisponivel, precoCorrida, passageiro);
     }
 
     @Override

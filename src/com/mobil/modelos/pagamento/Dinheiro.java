@@ -1,10 +1,11 @@
 package com.mobil.modelos.pagamento;
 
+import com.mobil.modelos.pessoas.Passageiro;
+
 public class Dinheiro extends MetodoDePagamento{
 
-    public Dinheiro(float dinheiroDisponivel, float precoCorrida) {
-        this.setDinheiroDisponivel(dinheiroDisponivel);
-        this.setPrecoCorrida(precoCorrida);
+    public Dinheiro(float dinheiroDisponivel, float precoCorrida, Passageiro passageiro) {
+        super(dinheiroDisponivel, precoCorrida, passageiro);
     }
 
     @Override // pagar é no final da Corrida
