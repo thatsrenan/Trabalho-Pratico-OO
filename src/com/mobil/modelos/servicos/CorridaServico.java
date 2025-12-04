@@ -8,6 +8,7 @@ import com.mobil.modelos.pessoas.Passageiro;
 import com.mobil.modelos.propriedades.Localizacao;
 
 public class CorridaServico {
+    private static final int VELOCIDADE_MEDIA_KMH = 60;
 
     public Corrida criarCorrida(String tipoCorrida, Motorista motorista,
                                 float dinheiroDisponivel, int metodoPagamento,
@@ -26,12 +27,17 @@ public class CorridaServico {
         }
     }
 
-    public float calcularDistancia(Localizacao origem, Localizacao destino) {
+    public static float calcularDistancia(Localizacao origem, Localizacao destino) {
         return (float) Localizacao.getDistancia(origem, destino);
     }
 
     public float estimarTempoChegada(Localizacao origem, Localizacao destino) {
         float distancia = calcularDistancia(origem, destino);
         return distancia; // retorna em minutos
+    }
+
+    public static int calcularTempo(Localizacao p, Localizacao m) {
+        float distanciaKm = (float) Localizacao.getDistancia(p, m);
+        return (int)((distanciaKm / VELOCIDADE_MEDIA_KMH) * 60); // Retorna em minutos
     }
 }

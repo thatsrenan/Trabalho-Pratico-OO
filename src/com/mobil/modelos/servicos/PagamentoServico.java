@@ -8,7 +8,6 @@ import com.mobil.modelos.pessoas.Passageiro;
 
 public class PagamentoServico {
 
-    // IMPLEMENTAR
     public MetodoDePagamento criarMetodoPagamento(int tipoPagamento,
                                                   float dinheiroDisponivel,
                                                   float precoCorrida,

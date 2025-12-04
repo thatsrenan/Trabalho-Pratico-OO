@@ -6,6 +6,8 @@ import com.mobil.modelos.pagamento.MetodoDePagamento;
 import com.mobil.modelos.pagamento.PIX;
 import com.mobil.modelos.pessoas.*;
 import com.mobil.modelos.propriedades.Localizacao;
+import com.mobil.modelos.servicos.CorridaServico;
+import com.mobil.modelos.servicos.PagamentoServico;
 
 import java.util.Scanner;
 
@@ -15,7 +17,8 @@ public abstract class Corrida {
     private Passageiro passageiro;
     private Localizacao localizacaoDestino;
     private MetodoDePagamento metodoDePagamento;
-    private static final int VELOCIDADE_MEDIA_KMH = 60;
+    private CorridaServico corridaServico = new CorridaServico();
+    private PagamentoServico pagamentoServico;
 
     Scanner sc = new Scanner(System.in);
 
@@ -39,10 +42,6 @@ public abstract class Corrida {
         return passageiro;
     }
 
-    public Localizacao getLocalizacao(){
-        return localizacao;
-    }
-
     public void setStatus (String status) {
         this.status = status;
     }
@@ -53,21 +52,18 @@ public abstract class Corrida {
 
     public abstract float calcularPrecoCorrida(float distancia);
 
-    public Corrida(Motorista motorista,
-                        float dinheiroDisponivel, int mPagamento, Passageiro passageiro, Localizacao destino) {
+    public Corrida(Motorista motorista, float dinheiroDisponivel, int mPagamento, Passageiro passageiro, Localizacao destino) {
+
         this.setPassageiro(passageiro);
         this.setLocalizacaoDestino(destino);
         float distancia = (float) Localizacao.getDistancia(getPassageiro().getLocalizacao(), destino);
         float precoCorrida = calcularPrecoCorrida(distancia);
         this.setMotorista(motorista); // da a referência para o motorista mais próximo disponível
 
+        pagamentoServico = new PagamentoServico();
 
-        // mPagamento : 1 = Dinheiro, 2 = PIX, 3 = CartaoDeCredito
-        switch (mPagamento) {
-            case 1 -> metodoDePagamento = new Dinheiro(dinheiroDisponivel, precoCorrida, passageiro);
-            case 2 -> metodoDePagamento = new PIX(dinheiroDisponivel, precoCorrida, passageiro);
-            case 3 -> metodoDePagamento = new CartaoDeCredito(dinheiroDisponivel, precoCorrida, passageiro);
-        }
+        // Chama o servico para criar de fato o metodoDePagamento de acordo com o int mPagamento
+        metodoDePagamento = pagamentoServico.criarMetodoPagamento(mPagamento, dinheiroDisponivel, precoCorrida, passageiro);
 
         System.out.printf("\nTudo pronto para iniciar a corrida.\nR$%.2f por %.2f km\nMotorista encontrado: %s\n", precoCorrida, distancia,this.getMotorista().getNome());
 
@@ -76,19 +72,19 @@ public abstract class Corrida {
                 2 - Cancelar
                 """);
 
-        boolean respostaValidaNaoComputada = true;
-        while(respostaValidaNaoComputada) {
+        boolean respostaValidaComputada = false;
+        while(!respostaValidaComputada) {
             System.out.println("Resposta: ");
             int resposta = sc.nextInt();
             switch(resposta) {
                 case 1 -> {
                     corridaChamada();
-                    respostaValidaNaoComputada = false;
+                    respostaValidaComputada = true;
                 }
                 case 2 -> {
                     System.out.println("Corrida cancelada.\n\n");
                     cancelarCorrida();
-                    respostaValidaNaoComputada = false;
+                    respostaValidaComputada = true;
                 }
                 default -> {
                     System.out.println("Resposta inválida...\n");
@@ -134,10 +130,10 @@ public abstract class Corrida {
             // o contador é para não spamar atualizações do motorista no terminal
             if (motoristaX != passageiroX && motoristaY != passageiroY && contador > 1) {
                 System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n",
-                        motoristaX, motoristaY, this.getLocalizacao().getDistancia(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()));
+                        motoristaX, motoristaY, CorridaServico.calcularDistancia(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()));
                 contador = -1;
 
-                System.out.printf("%d minutos para ele chegar!", calcularTempo(getPassageiro().getLocalizacao(), getMotorista().getLocalizacao()));
+                System.out.printf("%d minutos para ele chegar!", CorridaServico.calcularTempo(getPassageiro().getLocalizacao(), getMotorista().getLocalizacao()));
 
                 System.out.println("\nEnter para continuar.");
                 if (sc.hasNextLine()) {
@@ -198,7 +194,7 @@ public abstract class Corrida {
 
             if (passageiroX != destinoX && passageiroY != destinoY && contador > 1) {
                 System.out.printf("Vocês estão na posição [%d] [%d]. %d minutos para chegar ao destino!\n",
-                        motoristaX, motoristaY, calcularTempo(getPassageiro().getLocalizacao(), getLocalizacaoDestino()));
+                        motoristaX, motoristaY, CorridaServico.calcularTempo(getPassageiro().getLocalizacao(), getLocalizacaoDestino()));
                 contador = -1;
 
                 System.out.println("Enter para continuar");
@@ -230,11 +226,6 @@ public abstract class Corrida {
 
     public void cancelarCorrida() {
         System.out.println("Corrida cancelada.");
-    }
-
-    public int calcularTempo(Localizacao p, Localizacao m) {
-        float distanciaKm = (float) Localizacao.getDistancia(p, m);
-        return (int)((distanciaKm / VELOCIDADE_MEDIA_KMH) * 60); // Retorna em minutos
     }
 
 }

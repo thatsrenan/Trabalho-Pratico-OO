@@ -3,7 +3,6 @@ package com.mobil.modelos.pagamento;
 import com.mobil.modelos.pessoas.Passageiro;
 
 public class PIX extends MetodoDePagamento {
-    private String chavePIX;
 
     public PIX(float dinheiroDisponivel, float precoCorrida, Passageiro passageiro){
         super(dinheiroDisponivel, precoCorrida, passageiro);

@@ -3,8 +3,6 @@ package com.mobil.modelos.servicos;
 import com.mobil.modelos.pessoas.Passageiro;
 import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.corrida.Corrida;
-import com.mobil.modelos.corrida.CorridaComum;
-import com.mobil.modelos.corrida.CorridaDeLuxo;
 import com.mobil.modelos.propriedades.Localizacao;
 
 import java.util.ArrayList;
@@ -13,6 +11,7 @@ import java.util.Scanner;
 public class PassageiroServico {
     private Scanner sc;
     private LocalizacaoServico localizacaoServico;
+    private CorridaServico corridaServico;
 
     public PassageiroServico(Scanner scanner) {
         this.sc = scanner;
@@ -89,15 +88,14 @@ public class PassageiroServico {
 
         System.out.println("\n=== CHAMAR CORRIDA ===");
 
-        // Verifica senha
+        // Pede a senha
         if (!verificarSenha(passageiro)) {
             System.out.println("Senha incorreta! Operação cancelada.");
             return null;
         }
 
         // Solicita destino da corrida
-        Localizacao destino = localizacaoServico.solicitarLocalizacaoUsuario(
-                "Digite as coordenadas do DESTINO (0 - 100):");
+        Localizacao destino = localizacaoServico.solicitarLocalizacaoUsuario("Digite as coordenadas do DESTINO (0 - 100):");
 
         // Encontra motorista mais próximo do usuário
         Motorista motorista = encontrarMotoristaMaisProximo(motoristas, passageiro.getLocalizacao());
@@ -110,16 +108,7 @@ public class PassageiroServico {
         System.out.println("Motorista encontrado: " + motorista.getNome());
 
         // Cria a corrida escolhida
-        if (tipoCorrida.equalsIgnoreCase("Comum")) {
-            return new CorridaComum(motorista, dinheiroDisponivel, metodoPagamento,
-                    passageiro, destino);
-        } else if (tipoCorrida.equalsIgnoreCase("De Luxo") || tipoCorrida.equalsIgnoreCase("Luxo")) {
-            return new CorridaDeLuxo(motorista, dinheiroDisponivel, metodoPagamento,
-                    passageiro, destino);
-        } else {
-            System.out.println("Tipo de corrida inválido!");
-            return null;
-        }
+        return corridaServico.criarCorrida(tipoCorrida, motorista, dinheiroDisponivel, metodoPagamento, passageiro, destino);
     }
 
     // Corre o ArrayList em busca do Motorista DISPONÍVEL mais próximo do usuário
