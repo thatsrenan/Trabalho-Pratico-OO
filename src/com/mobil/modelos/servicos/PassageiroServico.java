@@ -108,6 +108,7 @@ public class PassageiroServico {
         System.out.println("Motorista encontrado: " + motorista.getNome());
 
         // Cria a corrida escolhida
+        corridaServico = new CorridaServico();
         return corridaServico.criarCorrida(tipoCorrida, motorista, dinheiroDisponivel, metodoPagamento, passageiro, destino);
     }
 

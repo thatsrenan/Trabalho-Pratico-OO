@@ -5,6 +5,7 @@ import com.mobil.modelos.pagamento.Dinheiro;
 import com.mobil.modelos.pagamento.MetodoDePagamento;
 import com.mobil.modelos.pagamento.PIX;
 import com.mobil.modelos.pessoas.*;
+import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
 import com.mobil.modelos.servicos.CorridaServico;
 import com.mobil.modelos.servicos.PagamentoServico;
@@ -19,6 +20,7 @@ public abstract class Corrida {
     private MetodoDePagamento metodoDePagamento;
     private CorridaServico corridaServico = new CorridaServico();
     private PagamentoServico pagamentoServico;
+    private Avaliacao avaliacao;
 
     Scanner sc = new Scanner(System.in);
 
@@ -222,6 +224,15 @@ public abstract class Corrida {
         // Atualização de status
         this.setStatus("Finalizada");
         this.getMotorista().setStatus("Disponível");
+        // Limpa buffer
+        if (sc.hasNextLine()) {
+            sc.nextLine();
+        }
+        // Implementação da Avaliação
+        Avaliacao avaliacao = new Avaliacao();
+        avaliacao.avaliar(sc);
+
+        this.getMotorista().setAvaliacao(avaliacao);
     }
 
     public void cancelarCorrida() {

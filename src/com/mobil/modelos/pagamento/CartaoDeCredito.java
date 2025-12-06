@@ -20,6 +20,7 @@ public class CartaoDeCredito extends MetodoDePagamento {
 
             for (int i = 0; i < 3; i++) {
                 int resposta = sc.nextInt();
+                sc.nextLine();
                 if (resposta != this.passageiro.getSenha()) {
                     if (i == 2) {
                         System.out.println("Cartão bloqueado.");
@@ -29,6 +30,7 @@ public class CartaoDeCredito extends MetodoDePagamento {
                     }
                 } else {
                     System.out.println("Corrida devidamente paga.");
+                    break;
                 }
             }
         }

@@ -10,7 +10,7 @@ public abstract class Usuario {
     private int senha;
 
     Localizacao localizacao;
-    Avaliacao avaliacao;
+    protected Avaliacao avaliacao;
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -30,6 +30,14 @@ public abstract class Usuario {
 
     public void setSenha(int senha) {
         this.senha = senha;
+    }
+
+    public void setLocalizacao(Localizacao localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public String getNome() {
@@ -56,7 +64,4 @@ public abstract class Usuario {
         return localizacao;
     }
 
-    public void setLocalizacao(Localizacao localizacao) {
-        this.localizacao = localizacao;
-    }
 }

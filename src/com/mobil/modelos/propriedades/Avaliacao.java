@@ -7,7 +7,6 @@ public class Avaliacao {
     private float mediaAvaliacoes;
     private int somaDasAvaliacoes;
 
-    Scanner sc = new Scanner(System.in);
 
     // SEMPRE DE 0 a 5!
     // Construtor do zero
@@ -23,8 +22,14 @@ public class Avaliacao {
         mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
     }
 
-    public void avaliar() {
-        System.out.println("Avalie sua experiência de 0 a 5 estrelas!");
+    public void avaliar(Scanner sc) {
+        System.out.println("\n=== AVALIE A CORRIDA ===");
+        System.out.println("1 ⭐ - Péssimo");
+        System.out.println("2 ⭐⭐ - Ruim");
+        System.out.println("3 ⭐⭐⭐ - Regular");
+        System.out.println("4 ⭐⭐⭐⭐ - Bom");
+        System.out.println("5 ⭐⭐⭐⭐⭐ - Excelente");
+        System.out.println("Digite sua nota (1-5): ");
 
         int avaliacao;
 
@@ -42,6 +47,7 @@ public class Avaliacao {
         totalDeAvaliacoes++;
 
         mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
+        System.out.println("✅ Avaliação registrada!");
     }
 
     public float getMediaAvaliacoes() {
