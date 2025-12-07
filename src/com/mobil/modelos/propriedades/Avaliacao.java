@@ -31,10 +31,6 @@ public class Avaliacao {
         mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
     }
 
-    public int getSomaDasAvaliacoes() {
-        return somaDasAvaliacoes;
-    }
-
     public float getMediaAvaliacoes() {
         return mediaAvaliacoes;
     }

@@ -1,5 +1,6 @@
 package com.mobil.modelos.pagamento;
 
+import com.mobil.modelos.excecoes.SaldoInsuficienteException;
 import com.mobil.modelos.pessoas.Passageiro;
 
 public class Dinheiro extends MetodoDePagamento{
@@ -14,7 +15,10 @@ public class Dinheiro extends MetodoDePagamento{
 
         if (this.getDinheiroDisponivel() < this.getPrecoCorrida()) {
 
-            // EXCEÇÃO DE DINHEIRO NÃO DISPONÍVEL
+            throw new SaldoInsuficienteException(
+                    "Saldo insuficiente! Disponível: R$ " +
+                            getDinheiroDisponivel() + " | Necessário: R$ " + getPrecoCorrida()
+            );
 
         } else {
             int[] notas = {200, 100, 50, 20, 10, 5, 2, 1};

@@ -1,5 +1,6 @@
 package com.mobil.modelos.corrida;
 
+import com.mobil.modelos.excecoes.*;
 import com.mobil.modelos.pagamento.CartaoDeCredito;
 import com.mobil.modelos.pagamento.Dinheiro;
 import com.mobil.modelos.pagamento.MetodoDePagamento;
@@ -220,7 +221,18 @@ public abstract class Corrida {
 
     public void finalizarCorrida() {
         System.out.println("Você chegou ao seu destino!");
-        metodoDePagamento.pagar();
+        try {
+            metodoDePagamento.pagar();
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("\n❌ ERRO NO PAGAMENTO: " + e.getMessage());
+            System.out.println("A corrida não pode ser finalizada.");
+            return; // Sai sem fazer avaliação
+        } catch (PagamentoBloqueadoException e) {
+            System.out.println("\n❌ ERRO DE SEGURANÇA: " + e.getMessage());
+            System.out.println("Entre em contato com seu banco.");
+            this.setStatus("Pagamento falhou");
+            return;
+        }
 
         // Atualização de status
         this.setStatus("Finalizada");
