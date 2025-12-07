@@ -24,13 +24,4 @@ public class PagamentoServico {
         }
     }
 
-    public boolean processarPagamento(MetodoDePagamento metodoPagamento) {
-        try {
-            metodoPagamento.pagar();
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro no pagamento: " + e.getMessage());
-            return false;
-        }
-    }
 }

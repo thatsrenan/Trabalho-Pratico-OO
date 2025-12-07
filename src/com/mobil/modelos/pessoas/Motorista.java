@@ -8,7 +8,7 @@ public class Motorista extends Usuario{
     private Veiculo veiculo;
 
     public Motorista(String nome, String email, String CPF, String telefone, int senha, int x, int y,
-                     String placa, String marca, String modelo, String cor, int ano, String numeroCNH, int anoDeValidade) {
+                     String placa, String marca, String modelo, String cor, int ano, String numeroCNH, int anoDeValidade, int totalDeAvaliacoes, int somaDasAvaliacoes) {
         this.setNome(nome);
         this.setEmail(email);
         this.setCPF(CPF);
@@ -17,6 +17,7 @@ public class Motorista extends Usuario{
         localizacao = LocalizacaoServico.criarLocalizacao(x, y);
         veiculo = new Veiculo(placa, marca, modelo, cor, ano);
         CNH = new CNH(numeroCNH, anoDeValidade);
+        avaliacao = new Avaliacao( totalDeAvaliacoes,  somaDasAvaliacoes);
         status = "Disponível";
     }
 
@@ -30,5 +31,9 @@ public class Motorista extends Usuario{
 
     public Veiculo getVeiculo() {
         return veiculo;
+    }
+
+    public Avaliacao getAvaliacao(){
+        return avaliacao;
     }
 }

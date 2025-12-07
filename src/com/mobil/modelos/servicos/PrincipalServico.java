@@ -297,6 +297,7 @@ public class PrincipalServico {
             for (int i = 0; i < disponiveis.size(); i++) {
                 Motorista m = disponiveis.get(i);
                 System.out.println("[" + (i + 1) + "] " + m.getNome());
+                System.out.printf("Avaliação Média: %.2f⭐\n", m.getAvaliacao().getMediaAvaliacoes());
                 System.out.println("   🚗 " + m.getVeiculo().getMarca() + " " +
                         m.getVeiculo().getModelo() + " (" + m.getVeiculo().getCor() + ")");
                 System.out.println("   📍 Posição: [" + m.getLocalizacao().getX() +
@@ -431,9 +432,11 @@ public class PrincipalServico {
 
     // Confirmar saída do Mobil
     private boolean confirmarSaida() {
-        System.out.println("\nDeseja realmente sair? (S/N)");
-        String confirmacao = sc.nextLine().toUpperCase();
-        return confirmacao.equals("S") || confirmacao.equals("SIM");
+        System.out.println("\nDeseja realmente sair?\n" +
+                "1 - Sim\n" +
+                "2 - Não\n");
+        int confirmacao = sc.nextInt();
+        return (confirmacao == 2);
     }
 
     // Lê um inteiro escrito no terminal

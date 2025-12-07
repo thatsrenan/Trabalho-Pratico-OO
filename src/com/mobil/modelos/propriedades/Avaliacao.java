@@ -50,6 +50,10 @@ public class Avaliacao {
         System.out.println("✅ Avaliação registrada!");
     }
 
+    public void calcularMediaAvaliacoes(){
+
+    }
+
     public float getMediaAvaliacoes() {
         return mediaAvaliacoes;
     }
