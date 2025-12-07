@@ -22,39 +22,21 @@ public class Avaliacao {
         mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
     }
 
-    public void avaliar(Scanner sc) {
-        System.out.println("\n=== AVALIE A CORRIDA ===");
-        System.out.println("1 ⭐ - Péssimo");
-        System.out.println("2 ⭐⭐ - Ruim");
-        System.out.println("3 ⭐⭐⭐ - Regular");
-        System.out.println("4 ⭐⭐⭐⭐ - Bom");
-        System.out.println("5 ⭐⭐⭐⭐⭐ - Excelente");
-        System.out.println("Digite sua nota (1-5): ");
-
-        int avaliacao;
-
-        while (true) {
-            avaliacao = sc.nextInt();
-
-            if (avaliacao < 0 || avaliacao > 5) {
-                System.out.println("A avaliação deve ser de 0 a 5! Tente novamente:");
-            } else {
-                break; // saiu do loop, avaliação válida
-            }
-        }
-
-        somaDasAvaliacoes += avaliacao;
-        totalDeAvaliacoes++;
-
-        mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
-        System.out.println("✅ Avaliação registrada!");
+    public void somaUmaAvaliacao() {
+        this.somaDasAvaliacoes++;
+        this.totalDeAvaliacoes++;
     }
 
     public void calcularMediaAvaliacoes(){
+        mediaAvaliacoes = (float) somaDasAvaliacoes / totalDeAvaliacoes;
+    }
 
+    public int getSomaDasAvaliacoes() {
+        return somaDasAvaliacoes;
     }
 
     public float getMediaAvaliacoes() {
         return mediaAvaliacoes;
     }
 }
+

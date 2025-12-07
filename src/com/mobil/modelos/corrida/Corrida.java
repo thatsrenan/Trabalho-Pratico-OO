@@ -7,6 +7,7 @@ import com.mobil.modelos.pagamento.PIX;
 import com.mobil.modelos.pessoas.*;
 import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
+import com.mobil.modelos.servicos.AvaliacaoServico;
 import com.mobil.modelos.servicos.CorridaServico;
 import com.mobil.modelos.servicos.PagamentoServico;
 
@@ -229,10 +230,10 @@ public abstract class Corrida {
             sc.nextLine();
         }
         // Implementação da Avaliação
-        Avaliacao avaliacao = new Avaliacao();
-        avaliacao.avaliar(sc);
-
+        avaliacao = this.getMotorista().getAvaliacao();
         this.getMotorista().setAvaliacao(avaliacao);
+        AvaliacaoServico.avaliar(sc,avaliacao);
+
     }
 
     public void cancelarCorrida() {
