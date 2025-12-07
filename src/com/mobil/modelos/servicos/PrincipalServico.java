@@ -307,7 +307,7 @@ public class PrincipalServico {
                         usuarioLogado.getLocalizacao(), m.getLocalizacao()
                 );
 
-                int tempoEstimado = localizacaoServico.estimarTempoDeslocamento(
+                int tempoEstimado = CorridaServico.calcularTempo(
                         usuarioLogado.getLocalizacao(), m.getLocalizacao()
                 );
 

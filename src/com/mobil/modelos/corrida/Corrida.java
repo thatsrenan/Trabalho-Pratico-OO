@@ -10,6 +10,7 @@ import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
 import com.mobil.modelos.servicos.AvaliacaoServico;
 import com.mobil.modelos.servicos.CorridaServico;
+import com.mobil.modelos.servicos.LocalizacaoServico;
 import com.mobil.modelos.servicos.PagamentoServico;
 
 import java.util.Scanner;
@@ -134,7 +135,7 @@ public abstract class Corrida {
             // o contador é para não spamar atualizações do motorista no terminal
             if (motoristaX != passageiroX && motoristaY != passageiroY && contador > 1) {
                 System.out.printf("Motorista está na posição [%d] [%d], a %.2f metros de você!\n",
-                        motoristaX, motoristaY, CorridaServico.calcularDistancia(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()));
+                        motoristaX, motoristaY, LocalizacaoServico.calcularDistanciaEmKM(getPassageiro().getLocalizacao(),getMotorista().getLocalizacao()));
                 contador = -1;
 
                 System.out.printf("%d minutos para ele chegar!", CorridaServico.calcularTempo(getPassageiro().getLocalizacao(), getMotorista().getLocalizacao()));

@@ -27,15 +27,6 @@ public class CorridaServico {
         }
     }
 
-    public static float calcularDistancia(Localizacao origem, Localizacao destino) {
-        return (float) Localizacao.getDistancia(origem, destino);
-    }
-
-    public float estimarTempoChegada(Localizacao origem, Localizacao destino) {
-        float distancia = calcularDistancia(origem, destino);
-        return distancia; // retorna em minutos
-    }
-
     public static int calcularTempo(Localizacao p, Localizacao m) {
         float distanciaKm = (float) Localizacao.getDistancia(p, m);
         return (int)((distanciaKm / VELOCIDADE_MEDIA_KMH) * 60); // Retorna em minutos

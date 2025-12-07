@@ -33,14 +33,8 @@ public class LocalizacaoServico {
         }
     }
 
-    public float calcularDistanciaEmKM(Localizacao origem, Localizacao destino) {
+    public static float calcularDistanciaEmKM(Localizacao origem, Localizacao destino) {
         // Considerando que 1 unidade = 1 km
         return (float) Localizacao.getDistancia(origem, destino);
-    }
-
-    public int estimarTempoDeslocamento(Localizacao origem, Localizacao destino) {
-        float distancia = calcularDistanciaEmKM(origem, destino);
-        // Velocidade média de 60 km/h
-        return (int) ((distancia / 60) * 60); // retorna em minutos
     }
 }
