@@ -8,10 +8,10 @@ Renan Curione de Castro - 242024834
 André Luiz Peron Martins Lanna
   
 [PDF do Trabalho](TrabalhoPratico.pdf)  
-Link do Word: https://unbbr-my.sharepoint.com/:w:/g/personal/242024834_aluno_unb_br/IQCw2uvyfbRSSoYhRlCGhlXtAa_T5t6GlkDkj2NINkYnhug?e=KehZkV  
+[Link do Microsoft Word](https://unbbr-my.sharepoint.com/:w:/g/personal/242024834_aluno_unb_br/IQCw2uvyfbRSSoYhRlCGhlXtAa7xfIC_1gx6iB4roZ4omJA?e=uh7nrn) 
   
 [UML do Trabalho](./UML.pdf)  
-Link do UML (Draw.io): https://app.diagrams.net/#G1QnHeagIPkerNJxlvZ0H9aUqagkX0lHmk#%7B%22pageId%22%3A%22ApVEAWr0NS10NoJyacWi%22%7D  
+[Link do UML (Draw.io)](https://app.diagrams.net/#G1QnHeagIPkerNJxlvZ0H9aUqagkX0lHmk#%7B%22pageId%22%3A%22ApVEAWr0NS10NoJyacWi%22%7D)  
   
 ## 📋 **Sobre o Projeto**
 O **Mobil** é um sistema completo de transporte por aplicativo desenvolvido em Java, que simula todas as etapas de uma corrida: desde a solicitação pelo passageiro até o pagamento e avaliação do serviço.
