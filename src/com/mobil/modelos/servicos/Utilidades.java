@@ -2,7 +2,7 @@ package com.mobil.modelos.servicos;
 
 import java.util.Scanner;
 
-public class Utilidades {
+public abstract class Utilidades {
 
     private static Scanner sc = new Scanner(System.in);
 
