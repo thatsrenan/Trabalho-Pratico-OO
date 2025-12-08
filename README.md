@@ -7,8 +7,7 @@ Renan Curione de Castro - 242024834
 ## Professor da Disciplina
 André Luiz Peron Martins Lanna
 
-### PDF do Trabalho:
-[Download PDF](./TrabalhoPraticoPDF.pdf)
+[PDF do Trabalho](./TrabalhoPraticoPDF.pdf)
 
 ## 📋 **Sobre o Projeto**
 O **Mobil** é um sistema completo de transporte por aplicativo desenvolvido em Java, que simula todas as etapas de uma corrida: desde a solicitação pelo passageiro até o pagamento e avaliação do serviço.
