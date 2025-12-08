@@ -1,6 +1,5 @@
-package com.mobil.modelos.servicos;
+package com.mobil.servicos;
 
-import com.mobil.modelos.excecoes.*;
 import com.mobil.modelos.propriedades.Localizacao;
 
 public class LocalizacaoServico {

@@ -1,8 +1,8 @@
 package com.mobil.modelos.pagamento;
 
-import com.mobil.modelos.excecoes.*;
+import com.mobil.excecoes.*;
 import com.mobil.modelos.pessoas.Passageiro;
-import com.mobil.modelos.servicos.Utilidades;
+import com.mobil.servicos.Utilidades;
 
 public class PIX extends MetodoDePagamento {
 

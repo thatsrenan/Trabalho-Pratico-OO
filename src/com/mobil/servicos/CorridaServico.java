@@ -1,4 +1,4 @@
-package com.mobil.modelos.servicos;
+package com.mobil.servicos;
 
 import com.mobil.modelos.corrida.Corrida;
 import com.mobil.modelos.corrida.CorridaComum;

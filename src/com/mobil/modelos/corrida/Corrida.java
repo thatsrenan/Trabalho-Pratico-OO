@@ -1,11 +1,11 @@
 package com.mobil.modelos.corrida;
 
-import com.mobil.modelos.excecoes.*;
+import com.mobil.excecoes.*;
 import com.mobil.modelos.pagamento.MetodoDePagamento;
 import com.mobil.modelos.pessoas.*;
 import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
-import com.mobil.modelos.servicos.*;
+import com.mobil.servicos.*;
 
 public abstract class Corrida {
     private String status; // Motorista a caminho, Em andamento, Finalizando

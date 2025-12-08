@@ -1,6 +1,6 @@
 package com.mobil.modelos.pessoas;
 import com.mobil.modelos.propriedades.*;
-import com.mobil.modelos.servicos.*;
+import com.mobil.servicos.*;
 
 public class Motorista extends Usuario{
     private String status; // Em andamento, Finalizada, etc

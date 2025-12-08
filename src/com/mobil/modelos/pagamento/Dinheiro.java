@@ -1,6 +1,6 @@
 package com.mobil.modelos.pagamento;
 
-import com.mobil.modelos.excecoes.SaldoInsuficienteException;
+import com.mobil.excecoes.SaldoInsuficienteException;
 import com.mobil.modelos.pessoas.Passageiro;
 
 public class Dinheiro extends MetodoDePagamento{

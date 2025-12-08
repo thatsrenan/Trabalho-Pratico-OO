@@ -1,4 +1,4 @@
-package com.mobil.modelos.servicos;
+package com.mobil.servicos;
 
 import java.util.Scanner;
 

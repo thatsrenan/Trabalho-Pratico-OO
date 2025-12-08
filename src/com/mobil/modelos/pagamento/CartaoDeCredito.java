@@ -1,9 +1,9 @@
 package com.mobil.modelos.pagamento;
 
-import com.mobil.modelos.excecoes.PagamentoBloqueadoException;
-import com.mobil.modelos.excecoes.SaldoInsuficienteException;
+import com.mobil.excecoes.PagamentoBloqueadoException;
+import com.mobil.excecoes.SaldoInsuficienteException;
 import com.mobil.modelos.pessoas.Passageiro;
-import com.mobil.modelos.servicos.Utilidades;
+import com.mobil.servicos.Utilidades;
 
 public class CartaoDeCredito extends MetodoDePagamento {
 

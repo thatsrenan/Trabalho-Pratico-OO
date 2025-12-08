@@ -1,4 +1,4 @@
-package com.mobil.modelos.excecoes;
+package com.mobil.excecoes;
 
 public class SaldoInsuficienteException extends RuntimeException {
     public SaldoInsuficienteException(String message) {

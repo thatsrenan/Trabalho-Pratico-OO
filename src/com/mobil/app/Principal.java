@@ -1,6 +1,6 @@
 package com.mobil.app;
 
-import com.mobil.modelos.servicos.PrincipalServico;
+import com.mobil.servicos.PrincipalServico;
 
 public class Principal {
     public static void main(String[] args) {
