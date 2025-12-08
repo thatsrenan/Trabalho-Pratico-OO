@@ -1,5 +1,6 @@
 package com.mobil.modelos.servicos;
 
+import com.mobil.modelos.excecoes.*;
 import com.mobil.modelos.propriedades.Localizacao;
 
 public class LocalizacaoServico {
@@ -9,7 +10,7 @@ public class LocalizacaoServico {
         return new Localizacao(x, y);
     }
 
-    public Localizacao solicitarLocalizacaoUsuario(String mensagem) {
+    public Localizacao solicitarLocalizacaoUsuario(String mensagem)  {
         System.out.println(mensagem);
 
         System.out.print("Coordenada X (0-100): ");
@@ -22,7 +23,7 @@ public class LocalizacaoServico {
         return new Localizacao(x, y);
     }
 
-    private static void validarCoordenadas(int x, int y) {
+    private static void validarCoordenadas(int x, int y)  {
         if (x < 0 || x > Localizacao.xMax || y < 0 || y > Localizacao.yMax) {
             throw new IllegalArgumentException(
                     "Coordenadas inválidas. X e Y devem estar entre 0 e " + Localizacao.xMax

@@ -1,12 +1,12 @@
 package com.mobil.modelos.servicos;
 
+import com.mobil.modelos.excecoes.NenhumMotoristaDisponivelException;
 import com.mobil.modelos.pessoas.Passageiro;
 import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.corrida.Corrida;
 import com.mobil.modelos.propriedades.Localizacao;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PassageiroServico {
 
@@ -93,9 +93,10 @@ public class PassageiroServico {
         // Encontra motorista mais próximo do usuário
         Motorista motorista = encontrarMotoristaMaisProximo(motoristas, passageiro.getLocalizacao());
 
-        if (motorista == null) {
-            System.out.println("Nenhum motorista disponível no momento!");
-            return null;
+        if (motorista == null){
+            throw new NenhumMotoristaDisponivelException(
+                    "Nenhum motorista disponível"
+            );
         }
 
         System.out.println("Motorista encontrado: " + motorista.getNome());
@@ -107,9 +108,6 @@ public class PassageiroServico {
 
     // Corre o ArrayList em busca do Motorista DISPONÍVEL mais próximo do usuário
     public Motorista encontrarMotoristaMaisProximo(ArrayList<Motorista> motoristas, Localizacao origem) {
-        if (motoristas == null || motoristas.isEmpty()) {
-            return null;
-        }
 
         Motorista motoristaMaisProximo = null;
         float menorDistancia = Float.MAX_VALUE;
