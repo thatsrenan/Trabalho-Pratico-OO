@@ -6,6 +6,7 @@ public class Motorista extends Usuario{
     private String status; // Em andamento, Finalizada, etc
     private CNH CNH;
     private Veiculo veiculo;
+    private Avaliacao avaliacao;
 
     public Motorista(String nome, String email, String CPF, String telefone, int senha, int x, int y,
                      String placa, String marca, String modelo, String cor, int ano, String numeroCNH, int anoDeValidade, int totalDeAvaliacoes, int somaDasAvaliacoes) {
@@ -14,7 +15,7 @@ public class Motorista extends Usuario{
         this.setCPF(CPF);
         this.setTelefone(telefone);
         this.setSenha(senha);
-        localizacao = LocalizacaoServico.criarLocalizacao(x, y);
+        this.setLocalizacao(LocalizacaoServico.criarLocalizacao(x, y));
         veiculo = new Veiculo(placa, marca, modelo, cor, ano);
         CNH = new CNH(numeroCNH, anoDeValidade);
         avaliacao = new Avaliacao( totalDeAvaliacoes,  somaDasAvaliacoes);
@@ -36,4 +37,5 @@ public class Motorista extends Usuario{
     public Avaliacao getAvaliacao(){
         return avaliacao;
     }
+
 }

@@ -136,18 +136,18 @@ public class PrincipalServico {
                 case 2:
                     // MOSTRA AS INFORMAÇÕES DO USUÁRIO
                     passageiroServico.exibirInformacoesDetalhadas(usuarioLogado);
-                    pausar();
+                    Utilidades.pausar();
                     break;
 
                 case 3:
                     // MOSTRA OS MOTORISTAS DISPONÍVEIS
                     exibirMotoristasDisponiveis();
-                    pausar();
+                    Utilidades.pausar();
                     break;
 
                 case 4:
                     exibirHistoricoCorridas();
-                    pausar();
+                    Utilidades.pausar();
                     break;
 
                 case 5:
@@ -163,7 +163,7 @@ public class PrincipalServico {
                 default:
                     // Caso default
                     System.out.println("Opção inválida! Tente novamente.");
-                    pausar();
+                    Utilidades.pausar();
             }
         }
     }
@@ -205,7 +205,7 @@ public class PrincipalServico {
             System.out.println("\n✗ Falha ao solicitar corrida!");
         }
 
-        pausar();
+        Utilidades.pausar();
     }
 
     // Menu de Tipos de Corrida disponíveis no Mobil, recebe a resposta e retorna o tipo escolhido
@@ -379,7 +379,7 @@ public class PrincipalServico {
 
                 default:
                     System.out.println("Opção inválida!");
-                    pausar();
+                    Utilidades.pausar();
             }
         }
     }
@@ -403,7 +403,7 @@ public class PrincipalServico {
         } else {
             System.out.println("✗ Coordenadas inválidas!");
         }
-        pausar();
+        Utilidades.pausar();
     }
 
     // Altera a senha do usuário com inputs do terminal
@@ -427,7 +427,7 @@ public class PrincipalServico {
         } else {
             System.out.println("✗ Senha atual incorreta!");
         }
-        pausar();
+        Utilidades.pausar();
     }
 
     // Confirmar saída do Mobil
@@ -450,13 +450,6 @@ public class PrincipalServico {
                 System.out.println("Entrada inválida! Digite um número inteiro.");
             }
         }
-    }
-
-    // "Enter" para continuar o programa
-    // Serve para não ser uma metralhadora de informação no terminal
-    private void pausar() {
-        System.out.println("\nPressione ENTER para continuar...");
-        sc.nextLine();
     }
 
     // Menu que aparece após sair do programa

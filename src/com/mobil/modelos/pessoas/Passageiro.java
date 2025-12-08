@@ -15,10 +15,6 @@ public class Passageiro extends Usuario {
         this.setCPF(CPF);
         this.setTelefone(telefone);
         this.setSenha(senha);
-        this.localizacao = localizacao;
-    }
-
-    public void setLocalizacao(Localizacao localizacao) {
-        this.localizacao = localizacao;
+        setLocalizacao(localizacao);;
     }
 }

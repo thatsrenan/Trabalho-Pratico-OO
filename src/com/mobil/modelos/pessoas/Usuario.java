@@ -9,8 +9,7 @@ public abstract class Usuario {
     private String telefone;
     private int senha;
 
-    Localizacao localizacao;
-    protected Avaliacao avaliacao;
+    private Localizacao localizacao;
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -34,10 +33,6 @@ public abstract class Usuario {
 
     public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
-    }
-
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
     }
 
     public String getNome() {

@@ -1,17 +1,11 @@
 package com.mobil.modelos.corrida;
 
 import com.mobil.modelos.excecoes.*;
-import com.mobil.modelos.pagamento.CartaoDeCredito;
-import com.mobil.modelos.pagamento.Dinheiro;
 import com.mobil.modelos.pagamento.MetodoDePagamento;
-import com.mobil.modelos.pagamento.PIX;
 import com.mobil.modelos.pessoas.*;
 import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
-import com.mobil.modelos.servicos.AvaliacaoServico;
-import com.mobil.modelos.servicos.CorridaServico;
-import com.mobil.modelos.servicos.LocalizacaoServico;
-import com.mobil.modelos.servicos.PagamentoServico;
+import com.mobil.modelos.servicos.*;
 
 import java.util.Scanner;
 
@@ -97,7 +91,7 @@ public abstract class Corrida {
             }
         }
 
-        sc.nextLine();
+        Utilidades.pausar();
     }
 
     public void corridaChamada() {
@@ -141,9 +135,7 @@ public abstract class Corrida {
                 System.out.printf("%d minutos para ele chegar!", CorridaServico.calcularTempo(getPassageiro().getLocalizacao(), getMotorista().getLocalizacao()));
 
                 System.out.println("\nEnter para continuar.");
-                if (sc.hasNextLine()) {
-                    sc.nextLine(); // Limpa qualquer entrada pendente
-                }
+                Utilidades.pausar();
             }
             contador++;
         }
@@ -152,9 +144,7 @@ public abstract class Corrida {
         System.out.println("Enter para entrar no carro e iniciar a corrida.");
 
         //Limpa buffer
-        if (sc.hasNextLine()) {
-            sc.nextLine(); // Limpa qualquer entrada pendente
-        }
+        Utilidades.pausar();
 
         corrida();
     }
@@ -203,9 +193,7 @@ public abstract class Corrida {
                 contador = -1;
 
                 System.out.println("Enter para continuar");
-                if (sc.hasNextLine()) {
-                    sc.nextLine(); // Limpa qualquer entrada pendente
-                }
+                Utilidades.pausar();
             }
 
             // Atualiza as posições reais dos objetos
@@ -239,9 +227,7 @@ public abstract class Corrida {
         this.setStatus("Finalizada");
         this.getMotorista().setStatus("Disponível");
         // Limpa buffer
-        if (sc.hasNextLine()) {
-            sc.nextLine();
-        }
+        Utilidades.pausar();
         // Implementação da Avaliação
         avaliacao = this.getMotorista().getAvaliacao();
         this.getMotorista().setAvaliacao(avaliacao);
