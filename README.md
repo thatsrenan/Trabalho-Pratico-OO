@@ -7,8 +7,8 @@ Renan Curione de Castro - 242024834
 ## Professor da Disciplina
 André Luiz Peron Martins Lanna
 
-### Link do PDF:
-https://unbbr-my.sharepoint.com/:w:/g/personal/242024834_aluno_unb_br/IQCw2uvyfbRSSoYhRlCGhlXtAUAO5xem2lVaHHzWM_H8_18?e=q2ZrMC 
+### PDF do Trabalho:
+[Download PDF](./TrabalhoPraticoPDF.pdf)
 
 ## 📋 **Sobre o Projeto**
 O **Mobil** é um sistema completo de transporte por aplicativo desenvolvido em Java, que simula todas as etapas de uma corrida: desde a solicitação pelo passageiro até o pagamento e avaliação do serviço.
