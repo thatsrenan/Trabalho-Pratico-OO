@@ -1,7 +1,5 @@
 package com.mobil.modelos.propriedades;
 
-import java.util.Scanner;
-
 public class Avaliacao {
     private int totalDeAvaliacoes;
     private float mediaAvaliacoes;

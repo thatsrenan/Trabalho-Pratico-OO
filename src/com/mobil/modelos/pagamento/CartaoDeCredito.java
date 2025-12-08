@@ -3,6 +3,7 @@ package com.mobil.modelos.pagamento;
 import com.mobil.modelos.excecoes.PagamentoBloqueadoException;
 import com.mobil.modelos.excecoes.SaldoInsuficienteException;
 import com.mobil.modelos.pessoas.Passageiro;
+import com.mobil.modelos.servicos.Utilidades;
 
 public class CartaoDeCredito extends MetodoDePagamento {
 
@@ -24,8 +25,7 @@ public class CartaoDeCredito extends MetodoDePagamento {
             System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar a transação: \n");
 
             for (int i = 0; i < 3; i++) {
-                int resposta = sc.nextInt();
-                sc.nextLine();
+                int resposta = Utilidades.lerInteiro();
                 if (resposta != this.passageiro.getSenha()) {
                     if (i == 2) {
                         System.out.println("Cartão bloqueado.");

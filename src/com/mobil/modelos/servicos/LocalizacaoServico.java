@@ -2,10 +2,7 @@ package com.mobil.modelos.servicos;
 
 import com.mobil.modelos.propriedades.Localizacao;
 
-import java.util.Scanner;
-
 public class LocalizacaoServico {
-    private Scanner sc = new Scanner(System.in);
 
     public static Localizacao criarLocalizacao(int x, int y) {
         validarCoordenadas(x, y);
@@ -16,10 +13,10 @@ public class LocalizacaoServico {
         System.out.println(mensagem);
 
         System.out.print("Coordenada X (0-100): ");
-        int x = sc.nextInt();
+        int x = Utilidades.lerInteiro();
 
         System.out.print("Coordenada Y (0-100): ");
-        int y = sc.nextInt();
+        int y = Utilidades.lerInteiro();
 
         validarCoordenadas(x, y);
         return new Localizacao(x, y);

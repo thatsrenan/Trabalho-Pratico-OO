@@ -7,8 +7,6 @@ import com.mobil.modelos.propriedades.Avaliacao;
 import com.mobil.modelos.propriedades.Localizacao;
 import com.mobil.modelos.servicos.*;
 
-import java.util.Scanner;
-
 public abstract class Corrida {
     private String status; // Motorista a caminho, Em andamento, Finalizando
     private Motorista motorista;
@@ -18,8 +16,6 @@ public abstract class Corrida {
     private CorridaServico corridaServico = new CorridaServico();
     private PagamentoServico pagamentoServico;
     private Avaliacao avaliacao;
-
-    Scanner sc = new Scanner(System.in);
 
     public void setMotorista(Motorista motorista) {
         this.motorista = motorista;
@@ -74,7 +70,7 @@ public abstract class Corrida {
         boolean respostaValidaComputada = false;
         while(!respostaValidaComputada) {
             System.out.println("Resposta: ");
-            int resposta = sc.nextInt();
+            int resposta = Utilidades.lerInteiro();
             switch(resposta) {
                 case 1 -> {
                     corridaChamada();
@@ -230,8 +226,7 @@ public abstract class Corrida {
         Utilidades.pausar();
         // Implementação da Avaliação
         avaliacao = this.getMotorista().getAvaliacao();
-        this.getMotorista().setAvaliacao(avaliacao);
-        AvaliacaoServico.avaliar(sc,avaliacao);
+        AvaliacaoServico.avaliar(avaliacao);
 
     }
 

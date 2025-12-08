@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PassageiroServico {
-    private Scanner sc;
+
     private LocalizacaoServico localizacaoServico;
     private CorridaServico corridaServico;
 
-    public PassageiroServico(Scanner scanner) {
-        this.sc = scanner;
+    public PassageiroServico() {
         this.localizacaoServico = new LocalizacaoServico();
     }
 
@@ -22,16 +21,16 @@ public class PassageiroServico {
         System.out.println("=== CADASTRO DE PASSAGEIRO ===");
 
         System.out.print("Digite o seu nome: ");
-        String nome = sc.nextLine();
+        String nome = Utilidades.lerString();
 
         System.out.print("Digite seu email: ");
-        String email = sc.nextLine();
+        String email = Utilidades.lerString();
 
         System.out.print("Digite seu CPF: ");
-        String cpf = sc.nextLine();
+        String cpf = Utilidades.lerString();
 
         System.out.print("Digite seu Telefone: ");
-        String telefone = sc.nextLine();
+        String telefone = Utilidades.lerString();
 
         int senha = solicitarSenhaValida();
         Localizacao localizacao = localizacaoServico.solicitarLocalizacaoUsuario(
@@ -67,13 +66,7 @@ public class PassageiroServico {
         while (true) {
             System.out.print("Digite sua senha (4 dígitos): ");
 
-            while (!sc.hasNextInt()) {
-                System.out.println("Por favor, digite apenas números!");
-                sc.next();
-            }
-
-            senha = sc.nextInt();
-            sc.nextLine();
+            senha = Utilidades.lerInteiro();
 
             if (senha >= 1000 && senha <= 9999) {
                 return senha;
@@ -138,13 +131,7 @@ public class PassageiroServico {
     public boolean verificarSenha(Passageiro passageiro) {
         System.out.print("Digite sua senha para prosseguir: ");
 
-        while (!sc.hasNextInt()) {
-            System.out.println("Por favor, digite apenas números!");
-            sc.next();
-        }
-
-        int senhaDigitada = sc.nextInt();
-        sc.nextLine();
+        int senhaDigitada = Utilidades.lerInteiro();
 
         return passageiro.getSenha() == senhaDigitada;
     }
@@ -180,9 +167,16 @@ public class PassageiroServico {
 
         int opcao;
         try {
-            opcao = Integer.parseInt(sc.nextLine().trim());
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(Utilidades.lerString().trim());
         } catch (NumberFormatException e) {
-            System.out.println("Opção inválida!");
+            System.out.println("Opção inválida! Digite um número.");
+            return true;
+        }
+
+        // Valida o intervalo
+        if (opcao < 1 || opcao > 5) {
+            System.out.println("Opção inválida! Escolha entre 1 e 5.");
             return true;
         }
 
@@ -218,19 +212,19 @@ public class PassageiroServico {
         System.out.println("\n=== ATUALIZAR DADOS CADASTRAIS ===");
 
         System.out.print("Novo nome (atual: " + passageiro.getNome() + "): ");
-        String novoNome = sc.nextLine();
+        String novoNome = Utilidades.lerString();
         if (!novoNome.trim().isEmpty()) {
             passageiro.setNome(novoNome);
         }
 
         System.out.print("Novo email (atual: " + passageiro.getEmail() + "): ");
-        String novoEmail = sc.nextLine();
+        String novoEmail = Utilidades.lerString();
         if (!novoEmail.trim().isEmpty()) {
             passageiro.setEmail(novoEmail);
         }
 
         System.out.print("Novo telefone (atual: " + passageiro.getTelefone() + "): ");
-        String novoTelefone = sc.nextLine();
+        String novoTelefone = Utilidades.lerString();
         if (!novoTelefone.trim().isEmpty()) {
             passageiro.setTelefone(novoTelefone);
         }

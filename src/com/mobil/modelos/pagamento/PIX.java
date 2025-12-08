@@ -2,6 +2,7 @@ package com.mobil.modelos.pagamento;
 
 import com.mobil.modelos.excecoes.*;
 import com.mobil.modelos.pessoas.Passageiro;
+import com.mobil.modelos.servicos.Utilidades;
 
 public class PIX extends MetodoDePagamento {
 
@@ -22,8 +23,7 @@ public class PIX extends MetodoDePagamento {
             System.out.println("Você tem o dinheiro disponível, digite sua senha para confirmar o PIX: ");
 
             for (int i = 0; i < 3; i++) {
-                int resposta = sc.nextInt();
-                sc.nextLine();
+                int resposta = Utilidades.lerInteiro();
                 if (resposta != this.passageiro.getSenha()) {
                     if (i == 2) {
                         System.out.println("Seu pix foi bloqueado pelo banco.");

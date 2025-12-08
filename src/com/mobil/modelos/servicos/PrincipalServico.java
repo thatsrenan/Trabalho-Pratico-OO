@@ -5,10 +5,8 @@ import com.mobil.modelos.pessoas.Motorista;
 import com.mobil.modelos.corrida.Corrida;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PrincipalServico {
-    private Scanner sc;
     private AppServico appServico;
     private PassageiroServico passageiroServico;
     private MotoristaServico motoristaServico;
@@ -21,9 +19,8 @@ public class PrincipalServico {
     private ArrayList<Corrida> historicoCorridas;
 
     public PrincipalServico() {
-        this.sc = new Scanner(System.in);
         this.appServico = new AppServico();
-        this.passageiroServico = new PassageiroServico(sc);
+        this.passageiroServico = new PassageiroServico();
         this.motoristaServico = new MotoristaServico();
         this.corridaServico = new CorridaServico();
         this.pagamentoServico = new PagamentoServico();
@@ -79,7 +76,7 @@ public class PrincipalServico {
                     "╚══════════════════════════════════════════╝\n" +
                     "\nEscolha uma opção: ");
 
-            int opcao = lerInteiro();
+            int opcao = Utilidades.lerInteiro();
 
             switch (opcao) {
                 case 1:
@@ -125,7 +122,7 @@ public class PrincipalServico {
             appServico.limparConsole();
             appServico.exibirMenuPrincipal();
 
-            int opcao = lerInteiro();
+            int opcao = Utilidades.lerInteiro();
 
             switch (opcao) {
                 case 1:
@@ -220,7 +217,7 @@ public class PrincipalServico {
         System.out.println("\n3 - Voltar");
         System.out.print("\nEscolha: ");
 
-        int opcao = lerInteiro();
+        int opcao = Utilidades.lerInteiro();
 
         switch (opcao) {
             case 1: return "Comum";
@@ -242,7 +239,7 @@ public class PrincipalServico {
         System.out.println("4 - Voltar");
         System.out.print("\nEscolha: ");
 
-        int opcao = lerInteiro();
+        int opcao = Utilidades.lerInteiro();
 
         if (opcao >= 1 && opcao <= 3) {
             return opcao;
@@ -263,7 +260,7 @@ public class PrincipalServico {
         System.out.print("Digite o valor disponível R$ ");
 
         try {
-            float valor = Float.parseFloat(sc.nextLine());
+            float valor = Utilidades.lerFloat();
 
             if (valor <= 0) {
                 System.out.println("Valor deve ser maior que zero!");
@@ -358,7 +355,7 @@ public class PrincipalServico {
                     "╚══════════════════════════════════════════╝\n" +
                     "\nEscolha uma opção: ");
 
-            int opcao = lerInteiro();
+            int opcao = Utilidades.lerInteiro();
 
             switch (opcao) {
                 case 1:
@@ -392,9 +389,9 @@ public class PrincipalServico {
                 usuarioLogado.getLocalizacao().getY() + "]");
 
         System.out.print("Nova coordenada X (0-100): ");
-        int x = lerInteiro();
+        int x = Utilidades.lerInteiro();
         System.out.print("Nova coordenada Y (0-100): ");
-        int y = lerInteiro();
+        int y = Utilidades.lerInteiro();
 
         if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
             usuarioLogado.getLocalizacao().setX(x);
@@ -410,13 +407,11 @@ public class PrincipalServico {
     private void alterarSenhaUsuario() {
         System.out.println("\n=== ALTERAR SENHA ===");
         System.out.print("Digite a senha atual: ");
-        int senhaAtual = sc.nextInt();
-        sc.nextLine();
+        int senhaAtual = Utilidades.lerInteiro();
 
         if (senhaAtual == usuarioLogado.getSenha()) {
             System.out.print("Nova senha (4 dígitos): ");
-            int novaSenha = sc.nextInt();
-            sc.nextLine();
+            int novaSenha = Utilidades.lerInteiro();
 
             if (novaSenha >= 1000 && novaSenha <= 9999) {
                 usuarioLogado.setSenha(novaSenha);
@@ -435,21 +430,8 @@ public class PrincipalServico {
         System.out.println("\nDeseja realmente sair?\n" +
                 "1 - Sim\n" +
                 "2 - Não\n");
-        int confirmacao = sc.nextInt();
+        int confirmacao = Utilidades.lerInteiro();
         return (confirmacao == 2);
-    }
-
-    // Lê um inteiro escrito no terminal
-    private int lerInteiro() {
-        while (true) {
-            try {
-                System.out.print("> ");
-                int valor = Integer.parseInt(sc.nextLine().trim());
-                return valor;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida! Digite um número inteiro.");
-            }
-        }
     }
 
     // Menu que aparece após sair do programa
@@ -463,9 +445,7 @@ public class PrincipalServico {
         System.out.println("Salvando dados...");
         System.out.println("Desconectando serviços...");
 
-        if (sc != null) {
-            sc.close();
-        }
+        Utilidades.fecharScanner();
 
         System.out.println("\n" +
                 "╔══════════════════════════════════════════╗\n" +
