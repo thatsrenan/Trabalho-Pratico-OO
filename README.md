@@ -7,6 +7,9 @@ Renan Curione de Castro - 242024834
 ## Professor da Disciplina
 André Luiz Peron Martins Lanna
 
+### Link do PDF:
+https://unbbr-my.sharepoint.com/:w:/g/personal/242024834_aluno_unb_br/IQCw2uvyfbRSSoYhRlCGhlXtAUAO5xem2lVaHHzWM_H8_18?e=q2ZrMC 
+
 ## 📋 **Sobre o Projeto**
 O **Mobil** é um sistema completo de transporte por aplicativo desenvolvido em Java, que simula todas as etapas de uma corrida: desde a solicitação pelo passageiro até o pagamento e avaliação do serviço.
 
@@ -37,41 +40,42 @@ O **Mobil** é um sistema completo de transporte por aplicativo desenvolvido em 
 
 ## 🏗️ **Arquitetura do Projeto**
 ```bash
-com.mobil/  
-├── app/ # Camada de Apresentação  
-│ └── Principal.java # Ponto de entrada da aplicação  
-│  
-├── modelos/ # Camada de Domínio  
-│ ├── corrida/ # Tipos de corrida (Strategy Pattern)  
-│ │ ├── Corrida.java (Abstract)  
-│ │ ├── CorridaComum.java (R$5 + R$1/km)  
-│ │ └── CorridaDeLuxo.java (R$9 + R$2.20/km)  
-│ │  
-│ ├── pessoas/ # Usuários do sistema (Herança)  
-│ │ ├── Usuario.java (Abstract)  
-│ │ ├── Passageiro.java (Cliente)  
-│ │ └── Motorista.java (Prestador de serviço)  
-│ │  
-│ ├── pagamento/ # Métodos de pagamento (Strategy Pattern)  
-│ │ ├── MetodoDePagamento.java (Abstract)  
-│ │ ├── Dinheiro.java (Com troco)  
-│ │ ├── PIX.java (Digital)  
-│ │ └── CartaoDeCredito.java (Cartão)  
-│ │  
-│ └── propriedades/ # Objetos de Valor  
-│ ├── Localizacao.java # Sistema de coordenadas 100x100  
-│ ├── Veiculo.java # Dados do veículo  
-│ ├── CNH.java # Carteira de motorista  
-│ └── Avaliacao.java # Sistema de 1-5 estrelas  
-│  
-└── servicos/ # Camada de Serviços/Lógica de Negócio  
-├── PrincipalServico.java # Controlador principal  
-├── AppServico.java # Configuração e utilidades  
-├── PassageiroServico.java # Gestão de passageiros  
-├── MotoristaServico.java # Gestão de motoristas  
-├── CorridaServico.java # Gestão de corridas  
-├── PagamentoServico.java # Processamento de pagamentos  
-└── LocalizacaoServico.java # Cálculos geográficos  
+com.mobil/
+├── app/
+│   └── Principal.java
+├── excecoes/
+│   ├── NenhumMotoristaDisponivelException.java
+│   ├── PagamentoBloqueadoException.java
+│   └── SaldoInsuficienteException.java
+├── modelos/
+│   ├── corrida/
+│   │   ├── Corrida.java
+│   │   ├── CorridaComum.java
+│   │   └── CorridaDeLuxo.java
+│   ├── pessoas/
+│   │   ├── Usuario.java
+│   │   ├── Passageiro.java
+│   │   └── Motorista.java
+│   ├── pagamento/
+│   │   ├── MetodoDePagamento.java
+│   │   ├── Dinheiro.java
+│   │   ├── PIX.java
+│   │   └── CartaoDeCredito.java
+│   └── propriedades/
+│       ├── Localizacao.java
+│       ├── Veiculo.java
+│       ├── CNH.java
+│       └── Avaliacao.java
+└── servicos/
+    ├── AppServico.java
+    ├── AvaliacaoServico.java
+    ├── CorridaServico.java
+    ├── LocalizacaoServico.java
+    ├── MotoristaServico.java
+    ├── PagamentoServico.java
+    ├── PassageiroServico.java
+    ├── PrincipalServico.java
+    └── Utilidades.java
 ```
 
 ## 🚀 **Como Executar o Projeto**
